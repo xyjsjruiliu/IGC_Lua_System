@@ -9,49 +9,49 @@
 // ============================================================
 //
 // ### EventScheduler::Event ###
-//	Type: Unique event type identifier (must match Enums.EventType)
-//	Name: Display name of the event
-//	NoticePeriod: Time in seconds before event start to send warning (0 = no notice)
-//	Duration: Event duration in seconds from start to auto-end (0 = no auto-end, event runs indefinitely)
+//	Type: 唯一的事件类型标识符 (必须与 Enums.EventType 匹配)
+//	Name: 事件的显示名称
+//	NoticePeriod: 事件开始前发送预告通知的秒数（0 = 不发送通知）
+//	Duration: 事件从开始到自动结束的持续时间（0 = 无自动结束，事件无限运行）
 //
 // ### EventScheduler::Event::Start ###
-//	Year: Year to start the event, -1 if not applies
-//	Month: Month number to start the event 1-12, -1 if not applies
-//	Day: Day of a month to start the event, 1-31, -1 if not applies
-//	DayOfWeek: Day of a week to start the event, -1 if not applies
-//		~ 0: Sunday
-//		~ 1: Monday
-//		~ 2: Tuesday
-//		~ 3: Wednesday
-//		~ 4: Thursday
-//		~ 5: Friday
-//		~ 6: Saturday
-//	Hour: Hour to start the event, 0-23, -1 if not applies
-//	Minute: Minute to start the event, 0-59, -1 if not applies
-//	Second: Second to start the event, 0-59, -1 if not applies
+//	Year: 事件开始的年份，不适用时设为 -1
+//	Month: 事件开始的月份（1-12），不适用时设为 -1
+//	Day: 事件开始的日期（1-31），不适用时设为 -1
+//	DayOfWeek: 事件开始的星期几，不适用时设为 -1
+//		~ 0: 星期天
+//		~ 1: 星期一
+//		~ 2: 星期二
+//		~ 3: 星期三
+//		~ 4: 星期四
+//		~ 5: 星期五
+//		~ 6: 星期六
+//	Hour: 事件开始的小时（0-23），不适用时设为 -1
+//	Minute: 事件开始的分钟（0-59），不适用时设为 -1
+//	Second: 事件开始的秒数（0-59），不适用时设为 -1
 //
 // NOTES:
-//	- Events can have multiple Start schedules
-//	- If Second != -1, scheduler checks events every second (second-precision mode)
-//	- If Second == -1 for all events, scheduler throttles to once per minute (better performance)
-//	- All time values use server local time
-//	- Event lifecycle: Notice → Start → (Duration elapsed) → End
+//	- 事件可以配置多个启动时间（Start）计划
+//	- 如果任意事件的 Second != -1，调度器将每秒检查事件（秒级精度模式）
+//	- 如果所有事件的 Second == -1，调度器将降频至每分钟检查一次（性能更优）
+//	- 所有时间值均使用服务器本地时间
+//	- 事件生命周期：预告通知 → 开始 → (持续时间结束) → 结束
 //
 // STRICTLY NO COMMENTS INSIDE TAGS
 -->
 
 <EventScheduler>
-	<Event Type="0" Name="Sample Event 1" NoticePeriod="300" Duration="600">
+	<Event Type="0" Name="示例事件 1" NoticePeriod="300" Duration="600">
 		<Start Year="-1" Month="-1" Day="-1" DayOfWeek="-1" Hour="20" Minute="0" Second="0" />
 	</Event>
 
-	<Event Type="1" Name="Sample Event 2" NoticePeriod="300" Duration="1200">
+	<Event Type="1" Name="示例事件 2" NoticePeriod="300" Duration="1200">
 		<Start Year="-1" Month="-1" Day="-1" DayOfWeek="-1" Hour="8" Minute="0" Second="0" />
 		<Start Year="-1" Month="-1" Day="-1" DayOfWeek="-1" Hour="14" Minute="0" Second="0" />
 		<Start Year="-1" Month="-1" Day="-1" DayOfWeek="-1" Hour="20" Minute="0" Second="0" />
 	</Event>
 	
-	<Event Type="2" Name="Sample Event 3" NoticePeriod="300" Duration="300">
+	<Event Type="2" Name="示例事件 3" NoticePeriod="300" Duration="300">
 		<Start Year="-1" Month="-1" Day="-1" DayOfWeek="-1" Hour="8" Minute="0" Second="0" />
 		<Start Year="-1" Month="-1" Day="-1" DayOfWeek="-1" Hour="14" Minute="0" Second="0" />
 		<Start Year="-1" Month="-1" Day="-1" DayOfWeek="-1" Hour="20" Minute="0" Second="0" />

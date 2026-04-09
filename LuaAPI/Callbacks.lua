@@ -7,39 +7,39 @@
 --═══════════════════════════════════════════════════════════════
 
 ------------------------------------------------------------------
--- Event Callbacks - Server Event Handlers
+-- Event Callbacks事件回调 - 服务器事件处理器
 ------------------------------------------------------------------
--- All callback functions triggered by game server events.
--- Sync: Executed synchronously (can return values to C++)
--- Async: Executed asynchronously (no return value expected)
-------------------------------------------------------------------
-
-------------------------------------------------------------------
--- Connection & Authentication Events
+-- 所有由游戏服务器事件触发的回调函数.
+-- 同步：同步执行 (可以返回值给C++)
+-- 异步: 异步执行 (不期望返回任何值)
 ------------------------------------------------------------------
 
--- Called when player enters character selection screen (Async)
+------------------------------------------------------------------
+-- 连接上线 & 账号认证 事件
+------------------------------------------------------------------
+
+-- 当玩家进入角色选择界面时调用 (异步)
 function onCharacterSelectEnter(oPlayer)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player successfully connects to server (Async)
+-- 当玩家成功连接到服务器时调用 (异步)
 function onPlayerConnect(oPlayer)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player logs in with character (Async)
+-- 当玩家使用角色登录时调用 (异步)
 function onPlayerLogin(oPlayer)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player disconnects from server (Async)
+-- 当玩家断开与服务器的连接时调用 (异步)
 function onPlayerDisconnect(oPlayer)
 	if (oPlayer ~= nil) then
 		
@@ -47,40 +47,40 @@ function onPlayerDisconnect(oPlayer)
 end
 
 ------------------------------------------------------------------
--- Server Lifecycle Events
+-- 服务器 生命周期 事件
 ------------------------------------------------------------------
 
--- Called when game server starts (Async)
+-- 游戏服务器启动时调用 (异步)
 function onGameServerStart()
 	
 end
 
--- Called when server initiates forced shutdown,disconnects all players immediately (Async)
+-- 当服务器强制关闭、立即断开所有玩家连接时调用 (异步)
 function onDisconnectAllPlayers()
 	
 end
 
--- Called when server initiates graceful shutdown,requests logout for all players (Async)
+-- 当服务器启动优雅关闭时调用，请求所有玩家登出 (异步)
 function onLogOutAllPlayers()
 	
 end
 
--- Called when server initiates restart,disconnects players with reconnect allowed (Async)
+-- 当服务器启动重启时调用，断开玩家连接并允许重连 (异步)
 function onDisconnectAllPlayersWithReconnect()
 	
 end
 ------------------------------------------------------------------
--- Warehouse Events
+-- 仓库 事件
 ------------------------------------------------------------------
 
--- Called when player opens warehouse (Async)
+-- 当玩家打开仓库时调用 (异步)
 function onOpenWarehouse(oPlayer)
 	if (oPlayer ~= nil) then
 
 	end
 end
 
--- Called when player closes warehouse (Async)
+-- 当玩家关闭仓库时调用 (异步)
 function onCloseWarehouse(oPlayer)
 	if (oPlayer ~= nil) then
 		
@@ -88,11 +88,11 @@ function onCloseWarehouse(oPlayer)
 end
 
 ------------------------------------------------------------------
--- Trade Events
+-- 交易 事件
 ------------------------------------------------------------------
 
--- Called when player sends trade request to another player (Sync - can prevent trade)
--- Return non-zero to prevent trade request from being sent
+-- 当玩家向另一名玩家发送交易请求时调用 (同步 - 可阻止交易)
+-- 返回非零值以阻止交易请求的发送
 function onTradeRequestSend(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
@@ -102,9 +102,9 @@ function onTradeRequestSend(oPlayer, oTarget)
 	return 0
 end
 
--- Called when player receives trade response from another player (Sync - can prevent response processing)
--- Return non-zero to prevent response from being processed
--- bResponse: true = accept, false = decline
+-- 当玩家收到另一名玩家的交易响应时调用 (同步 - 可阻止响应处理)
+-- 返回非零值以阻止处理该响应
+-- bResponse: true = 接受, false = 拒绝
 function onTradeResponseReceive(oPlayer, oTarget, bResponse)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
@@ -114,8 +114,8 @@ function onTradeResponseReceive(oPlayer, oTarget, bResponse)
 	return 0
 end
 
--- Called when both players click OK button in trade window (Sync - can prevent trade completion)
--- Return non-zero to prevent trade from completing
+-- 当双方玩家在交易窗口中点击“确定”按钮时调用 (同步 - 可阻止交易完成)
+-- 返回非零值以阻止交易完成
 function onTradeAccept(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
@@ -125,8 +125,8 @@ function onTradeAccept(oPlayer, oTarget)
 	return 0
 end
 
--- Called when trade is cancelled by either player (Sync - can prevent trade cancellation)
--- Return non-zero to prevent trade cancellation
+-- 当任意一方玩家取消交易时调用 (同步 - 可阻止交易取消)
+-- 返回非零值以阻止交易取消
 function onTradeCancel(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
@@ -137,24 +137,24 @@ function onTradeCancel(oPlayer, oTarget)
 end
 
 ------------------------------------------------------------------
--- Special Event Entries
+-- 特殊事件入场（血色、赤色、恶魔）
 ------------------------------------------------------------------
 
--- Called when player enters Blood Castle event (Async)
+-- 当玩家进入血色城堡事件时调用 (异步)
 function onBloodCastleEnter(oPlayer, iEventLevel)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player enters Chaos Castle event (Async)
+-- 当玩家进入赤色要塞事件时调用 (异步)
 function onChaosCastleEnter(oPlayer, iEventLevel)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player enters Devil Square event (Async)
+-- 当玩家进入恶魔广场事件时调用 (异步)
 function onDevilSquareEnter(oPlayer, iEventLevel)
 	if (oPlayer ~= nil) then
 		
@@ -162,27 +162,27 @@ function onDevilSquareEnter(oPlayer, iEventLevel)
 end
 
 ------------------------------------------------------------------
--- Player Progression Events
+-- 玩家成长事件
 ------------------------------------------------------------------
 
--- Called when player gains a level (Async)
+-- 当玩家升级时调用 (异步)
 function onPlayerLevelUp(oPlayer)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player gains a master level (Async)
+-- 当玩家大师升级时调用 (异步)
 function onPlayerMasterLevelUp(oPlayer)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player types a command (Sync - can prevent execution)
--- Return 1 to block the command, return 0 (or nothing) to allow it.
--- szCmd contains the full command string including the leading slash.
--- Split it in Lua using string.gmatch or similar pattern matching.
+-- 当玩家输入命令时调用 (同步 - 可阻止执行)
+-- 返回 1 则阻止该命令，返回 0（或不返回任何值）则允许执行.
+-- szCmd 包含完整的命令字符串，包括前导斜杠 /.
+-- 可在 Lua 中使用 string.gmatch 或类似的模式匹配方法对其进行分割.
 function onUseCommand(oPlayer, szCmd)
 	if (oPlayer ~= nil) then
 		-- Split szCmd into parts (e.g. "/post Hello World" -> {"/post", "Hello", "World"})
@@ -196,16 +196,16 @@ function onUseCommand(oPlayer, szCmd)
 	return 0
 end
 
--- Called when player performs character reset (Sync)
+-- 当玩家进行角色转生时调用 (异步)
 function onPlayerReset(oPlayer)
 
 end
 
 ------------------------------------------------------------------
--- NPC Interaction Events
+-- NPC交互事件
 ------------------------------------------------------------------
 
--- Called when player talks to NPC (Sync)
+-- 当玩家与NPC对话时调用 (同步)
 function onNpcTalk(oPlayer, oNpc)
 	if (oPlayer ~= nil) then
 		if (oNpc ~= nil) then
@@ -215,7 +215,7 @@ function onNpcTalk(oPlayer, oNpc)
 	return 0
 end
 
--- Called when player ends conversation with to NPC by closing window (Sync)
+-- 当玩家通过关闭窗口结束与NPC的对话时调用 (同步)
 function onCloseWindow(oPlayer)
 	if (oPlayer ~= nil) then
 	
@@ -224,10 +224,10 @@ function onCloseWindow(oPlayer)
 end
 
 ------------------------------------------------------------------
--- Inventory Management Events
+-- 背包管理事件
 ------------------------------------------------------------------
 
--- Called when player uses any item via right mouse click (Sync)
+-- 当玩家通过鼠标右键使用任何物品时调用 (同步)
 function onItemUse(iResult, oPlayer, oItem, iItemSourcePos, iItemTargetPos)
 	if (oPlayer ~= nil) then
 		
@@ -235,21 +235,21 @@ function onItemUse(iResult, oPlayer, oItem, iItemSourcePos, iItemTargetPos)
 	return 0
 end
 
--- Called when player moves item in main inventory (Async)
+-- 当玩家在主背包中移动物品时调用 (异步)
 function onInventoryMoveItem(oPlayer, iItemSourcePos, iItemTargetPos, btResult)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player moves item in event inventory (Async)
+-- 当玩家在活动背包中移动物品时调用 (异步)
 function onEventInventoryMoveItem(oPlayer, iItemSourcePos, iItemTargetPos, btResult)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player moves Muun item in inventory (Async)
+-- 当玩家在宠物背包中移动物品时调用 (异步)
 function onMuunInventoryMoveItem(oPlayer, iItemSourcePos, iItemTargetPos, btResult)
 	if (oPlayer ~= nil) then
 		
@@ -257,24 +257,24 @@ function onMuunInventoryMoveItem(oPlayer, iItemSourcePos, iItemTargetPos, btResu
 end
 
 ------------------------------------------------------------------
--- Item Acquisition Events
+-- 物品获取事件
 ------------------------------------------------------------------
 
--- Called when player picks up item from ground (Async)
+-- 当玩家从地面拾取物品时调用 (异步)
 function onItemGet(oPlayer, sItemType, sItemLevel, btItemDur, btItemElement)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player acquires event item (Async)
+-- 当玩家获取活动物品时调用 (异步)
 function onEventItemGet(oPlayer, sItemType, sItemLevel, btItemDur, btItemElement)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player acquires Muun item (Async)
+-- 当玩家获取宠物物品时调用 (异步)
 function onMuunItemGet(oPlayer, sItemType, sItemLevel, btItemDur, btItemElement)
 	if (oPlayer ~= nil) then
 		
@@ -282,17 +282,17 @@ function onMuunItemGet(oPlayer, sItemType, sItemLevel, btItemDur, btItemElement)
 end
 
 ------------------------------------------------------------------
--- Equipment Events
+-- 装备事件
 ------------------------------------------------------------------
 
--- Called when player equips item (Async)
+-- 当玩家装备物品时调用 (异步)
 function onItemEquip(oPlayer, iItemSourcePos, iItemTargetPos, btResult)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player unequips item (Async)
+-- 当玩家卸下装备物品时调用 (异步)
 function onItemUnEquip(oPlayer, iItemSourcePos, iItemTargetPos, btResult)
 	if (oPlayer ~= nil) then
 		
@@ -300,10 +300,10 @@ function onItemUnEquip(oPlayer, iItemSourcePos, iItemTargetPos, btResult)
 end
 
 ------------------------------------------------------------------
--- Item Repair Events
+-- 物品修复事件
 ------------------------------------------------------------------
 
--- Called when player repairs item at NPC (Async)
+-- 当玩家在NPC处修复物品时调用 (异步)
 function onItemRepair(oPlayer, oItemm)
 	if (oPlayer ~= nil) then
 		if (oItemm ~= nil) then
@@ -313,38 +313,38 @@ function onItemRepair(oPlayer, oItemm)
 end
 
 ------------------------------------------------------------------
--- Map & Movement Events
+-- 地图 & 移动事件
 ------------------------------------------------------------------
 
--- Called when player joins map after login or teleport (Async)
+-- 当玩家在登录或传送后加入地图时调用 (异步)
 function onCharacterJoinMap(oPlayer)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player moves between maps (Async)
+-- 当玩家在地图之间移动时调用 (异步)
 function onMoveMap(oPlayer, wMapNumber, btPosX, btPosY, iGateNumber)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player uses map gate/portal (Async)
+-- 当玩家使用地图传送门时调用 (异步)
 function onMapTeleport(oPlayer, iGateNummber)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player uses teleport command or item (Async)
+-- 当玩家使用传送命令或道具时调用 (异步)
 function onTeleport(oPlayer, wMapNumber, btPosX, btPosY)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player uses teleport magic skill (Async)
+-- 当玩家使用传送魔法技能时调用 (异步)
 function onTeleportMagicUse(oPlayer, btPosX, btPosY)
 	if (oPlayer ~= nil) then
 		
@@ -352,10 +352,10 @@ function onTeleportMagicUse(oPlayer, btPosX, btPosY)
 end
 
 ------------------------------------------------------------------
--- Combat & Death Events
+-- 战斗 & 死亡事件
 ------------------------------------------------------------------
 
--- Called when player kills another player (Async)
+-- 当玩家击杀另一名玩家时调用 (异步)
 function onPlayerKill(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
@@ -364,7 +364,7 @@ function onPlayerKill(oPlayer, oTarget)
 	end
 end
 
--- Called when player dies (Async)
+-- 当玩家死亡时调用 (异步)
 function onPlayerDie(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
@@ -373,14 +373,14 @@ function onPlayerDie(oPlayer, oTarget)
 	end
 end
 
--- Called when player respawns after death (Async)
+-- 当玩家死亡后重生时调用 (异步)
 function onPlayerRespawn(oPlayer)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when player kills monster (Async)
+-- 当玩家击杀怪物时调用 (异步)
 function onMonsterKill(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
@@ -389,7 +389,7 @@ function onMonsterKill(oPlayer, oTarget)
 	end
 end
 
--- Called when monster dies (Async)
+-- 当怪物死亡时调用 (异步)
 function onMonsterDie(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
@@ -398,14 +398,14 @@ function onMonsterDie(oPlayer, oTarget)
 	end
 end
 
--- Called when monster spawns on map (Async)
+-- 当地图上生成怪物时调用 (异步)
 function onMonsterSpawn(oPlayer)
 	if (oPlayer ~= nil) then
 		
 	end
 end
 
--- Called when monster respawns after death (Async)
+-- 当怪物死亡后重生时调用 (异步)
 function onMonsterRespawn(oPlayer)
 	if (oPlayer ~= nil) then
 		
@@ -441,10 +441,10 @@ function onUseNormalSkill(oPlayer, oTarget, iSkill)
 end
 
 ------------------------------------------------------------------
--- Shop & Trading Events
+-- 商店 & 交易事件
 ------------------------------------------------------------------
 
--- Called when player buys item from NPC shop (Sync - can prevent purchase)
+-- 当玩家从NPC商店购买物品时调用 (同步 - 可阻止购买)
 function onShopBuyItem(oPlayer, oItem)
 	if (oPlayer ~= nil) then
 		if (oItem ~= nil) then
@@ -454,7 +454,7 @@ function onShopBuyItem(oPlayer, oItem)
 	end
 end
 
--- Called when player sells item to NPC shop (Sync - can prevent sale)
+-- 当玩家向NPC商店出售物品时调用 (同步 - 可阻止出售)
 function onShopSellItem(oPlayer, oItem)
 	if (oPlayer ~= nil) then
 		if (oItem ~= nil) then
@@ -464,7 +464,7 @@ function onShopSellItem(oPlayer, oItem)
 	end
 end
 
--- Called when player sells event item to NPC (Async)
+-- 当玩家向NPC出售活动物品时调用 (异步)
 function onShopSellEventItem(oPlayer, oItem)
 	if (oPlayer ~= nil) then
 		if (oItem ~= nil) then
@@ -482,22 +482,22 @@ function onMossMerchantUse(oPlayer, iSectionId)
 end
 
 ------------------------------------------------------------------
--- Database Query Events
+-- 数据库查询事件
 ------------------------------------------------------------------
--- Global storage
+-- DS全局存储
 local queryResultsDS = {}
 
--- Called when DataServer database query result is received (Async)
+-- 当收到 DataServer 数据库查询结果时调用 (异步)
 function onDSDBQueryReceive(iPlayerIndex, iQueryNumber, bIsLastPacket, iCurrentRow, btColumnCount, btCurrentPacket, oRow)
 	if (oRow ~= nil) then
 		
 	end
 end
 
--- Global storage
+-- JS全局存储
 local queryResultsJS = {}
 
--- Called when JoinServer database query result is received (Async)
+-- 当收到 JoinServer 数据库查询结果时调用 (异步)
 function onJSDBQueryReceive(iPlayerIndex, iQueryNumber, bIsLastPacket, iCurrentRow, btColumnCount, btCurrentPacket, oRow)
 	if (oRow ~= nil) then
 		

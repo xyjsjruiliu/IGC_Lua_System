@@ -7,25 +7,25 @@
 --═══════════════════════════════════════════════════════════════
 
 ------------------------------------------------------------------
--- Timer Callbacks (called by C++ engine)
+-- 计时器回调（由 C++ 引擎调用）
 ------------------------------------------------------------------
 
--- Called every second
+-- 每秒调用一次
 function onTimerProcessSecond()
 	EventScheduler.ProcessEvents()
 end
 
--- Called every minute
+-- 每分钟调用一次
 function onTimerProcessMinute()
-	-- Add minute-based processing here
+	-- 在此添加基于分钟的处理逻辑
 end
 
--- Called every hour
+-- 每小时调用一次
 function onTimerProcessHour()
-	-- Add hour-based processing here
+	-- 在此添加基于小时的处理逻辑
 end
 
--- Called on day change (midnight)
+-- 每天调用一次 (午夜0点)
 function onTimerProcessDayChange()
-	-- Add day-change processing here
+	-- 在此添加基于每天的处理逻辑
 end

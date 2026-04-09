@@ -7,39 +7,39 @@
 --═══════════════════════════════════════════════════════════════
 
 ------------------------------------------------------------------
--- Helpers.lua - Global Helper Functions
+-- Helpers.lua - 全局辅助函数
 ------------------------------------------------------------------
--- Utility functions for color conversion and item ID calculation.
--- Loaded globally via Use() - no require needed.
+-- 颜色转换和物品ID计算的实用工具函数。
+-- 通过 Use() 全局加载 - 无需 require。
 ------------------------------------------------------------------
 
 Helpers = {}
 
--- Replicates COLORREF RGB macro from Windows API
--- Converts RGB color components (0-255) to a single DWORD value
--- Usage: local color = Helpers.RGB(255, 0, 0)  -- Red
+-- 重现 Windows API 中的 COLORREF RGB 宏
+-- 将 RGB 颜色分量 (0-255) 转换为单个 DWORD 值
+-- 用法: local color = Helpers.RGB(255, 0, 0)  — 红色
 function Helpers.RGB(r, g, b)
 	return (r & 0xFF) | ((g & 0xFF) << 8) | ((b & 0xFF) << 16)
 end
 
--- Calculate ItemId from ItemType and ItemIndex
--- ItemType: Item group/category (0-15)
--- ItemIndex: Item index within the group (0-511)
--- Usage: local itemId = Helpers.MakeItemId(14, 13)
+-- 根据 ItemType 和 ItemIndex 计算 ItemId
+-- ItemType: 物品组/类别 (0-15)
+-- ItemIndex: 该组内的物品索引 (0-511)
+-- 用法: local itemId = Helpers.MakeItemId(14, 13)
 function Helpers.MakeItemId(ItemType, ItemIndex)
 	return ItemType * 512 + ItemIndex
 end
 
--- Extract ItemType from ItemId
--- Returns the item group/category (0-15)
--- Usage: local itemType = Helpers.GetItemType(7181)  -- Returns 14
+-- 从 ItemId 中提取 ItemType
+-- 返回物品组/类别 (0-15)
+-- 用法: local itemType = Helpers.GetItemType(7181)  -- 返回 14	实际是祝福宝石
 function Helpers.GetItemType(ItemId)
 	return math.floor(ItemId / 512)
 end
 
--- Extract ItemIndex from ItemId
--- Returns the item index within the group (0-511)
--- Usage: local itemIndex = Helpers.GetItemIndex(7181)  -- Returns 13
+-- 从 ItemId 中提取 ItemIndex
+-- 返回该组内的物品索引 (0-511)
+-- 用法: local itemIndex = Helpers.GetItemIndex(7181)  -- 返回 13	实际是祝福宝石
 function Helpers.GetItemIndex(ItemId)
 	return ItemId % 512
 end

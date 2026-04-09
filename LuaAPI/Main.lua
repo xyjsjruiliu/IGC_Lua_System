@@ -7,15 +7,15 @@
 --═══════════════════════════════════════════════════════════════
 
 ------------------------------------------------------------------
--- Main.lua - Server Script Entry Point
+-- Main.lua - 服务器脚本入口点
 ------------------------------------------------------------------
--- Initializes core server functionality and timer callbacks.
--- Modules auto-reload when scripts refresh from C++.
+-- 初始化核心服务器功能和计时器回调。
+-- 当脚本从 C++ 刷新时，模块会自动重新加载。
 ------------------------------------------------------------------
 
 local BASE = "Plugins\\LuaAPI\\"
 
--- Load global dependencies (order matters)
+-- 加载全局依赖项（顺序很重要）
 LoadScript(BASE .. "Defines\\Helpers.lua")
 LoadScript(BASE .. "Defines\\Constants.lua")
 LoadScript(BASE .. "Defines\\Enums.lua")
@@ -25,5 +25,5 @@ LoadScript(BASE .. "Includes\\TimerHelpers.lua")
 LoadScript(BASE .. "Includes\\EventScheduler.lua")
 LoadScript(BASE .. "Timers.lua")
 
--- Initialize event scheduler
+-- 初始化事件调度器
 EventScheduler.Initialize()

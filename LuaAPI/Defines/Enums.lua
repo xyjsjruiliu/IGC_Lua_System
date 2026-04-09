@@ -9,125 +9,125 @@
 Enums = {}
 
 Enums.CharacterClassType = {
-	WIZARD			= 0,
-	KNIGHT			= 1,
-	ELF				= 2,
-	MAGUMSA			= 3,
-	DARKLORD		= 4,
-	SUMMONER		= 5,
-	MONK			= 6,
-	LANCER			= 7,
-	RUNEWIZARD		= 8,
-	SLAYER			= 9,
-	GUNCRUSHER		= 10,
-	LIGHTWIZARD		= 11,
-	LEMURIAMAGE		= 12,
-	ILLUSIONKNIGHT	= 13,
-	ALCHEMIST		= 14,
-	CRUSADER		= 15,
+	WIZARD			= 0,	-- 魔法师
+	KNIGHT			= 1,	-- 剑士
+	ELF				= 2,	-- 弓箭手
+	MAGUMSA			= 3,	-- 魔剑士
+	DARKLORD		= 4,	-- 圣导师
+	SUMMONER		= 5,	-- 召唤术士
+	MONK			= 6,	-- 格斗家
+	LANCER			= 7,	-- 梦幻骑士
+	RUNEWIZARD		= 8,	-- 符文法师
+	SLAYER			= 9,	-- 疾风
+	GUNCRUSHER		= 10,	-- 火枪手
+	LIGHTWIZARD		= 11,	-- 光明法师
+	LEMURIAMAGE		= 12,	-- 圣光学者
+	ILLUSIONKNIGHT	= 13,	-- 赤色战士
+	ALCHEMIST		= 14,	-- 炼金术士
+	CRUSADER		= 15,	-- 圣骑士
 	MAX = 16,
 }
--- Usage: if oPlayer.Class == Enums.CharacterClassType.WIZARD then print("Player is Wizard") end
--- Usage: for i = 0, Enums.CharacterClassType.MAX - 1 do print("Class ID: " .. i) end
+-- 用法: if oPlayer.Class == Enums.CharacterClassType.WIZARD then print("玩家是魔法师") end
+-- 用法: for i = 0, Enums.CharacterClassType.MAX - 1 do print("职业ID: " .. i) end
 
 Enums.CharacterClassTypeName = {
-	{ name = "Wizard",			id = Enums.CharacterClassType.WIZARD },
-	{ name = "Knight",			id = Enums.CharacterClassType.KNIGHT },
-	{ name = "Elf",				id = Enums.CharacterClassType.ELF },
-	{ name = "Magumsa",			id = Enums.CharacterClassType.MAGUMSA },
-	{ name = "Dark Lord",		id = Enums.CharacterClassType.DARKLORD },
-	{ name = "Summoner",		id = Enums.CharacterClassType.SUMMONER },
-	{ name = "Monk",			id = Enums.CharacterClassType.MONK },
-	{ name = "Lancer",			id = Enums.CharacterClassType.LANCER },
-	{ name = "Rune Wizard",		id = Enums.CharacterClassType.RUNEWIZARD },
-	{ name = "Slayer",			id = Enums.CharacterClassType.SLAYER },
-	{ name = "Gun Crusher",		id = Enums.CharacterClassType.GUNCRUSHER },
-	{ name = "Light Wizard",	id = Enums.CharacterClassType.LIGHTWIZARD },
-	{ name = "Lemuria Mage",	id = Enums.CharacterClassType.LEMURIAMAGE },
-	{ name = "Illusion Knight",	id = Enums.CharacterClassType.ILLUSIONKNIGHT },
-	{ name = "Alchemist",		id = Enums.CharacterClassType.ALCHEMIST },
-	{ name = "Crusader",		id = Enums.CharacterClassType.CRUSADER }
+	{ name = "魔法师",			id = Enums.CharacterClassType.WIZARD },
+	{ name = "剑士",			id = Enums.CharacterClassType.KNIGHT },
+	{ name = "弓箭手",				id = Enums.CharacterClassType.ELF },
+	{ name = "魔剑士",			id = Enums.CharacterClassType.MAGUMSA },
+	{ name = "圣导师",		id = Enums.CharacterClassType.DARKLORD },
+	{ name = "召唤术士",		id = Enums.CharacterClassType.SUMMONER },
+	{ name = "格斗家",			id = Enums.CharacterClassType.MONK },
+	{ name = "梦幻骑士",			id = Enums.CharacterClassType.LANCER },
+	{ name = "符文法师",		id = Enums.CharacterClassType.RUNEWIZARD },
+	{ name = "疾风",			id = Enums.CharacterClassType.SLAYER },
+	{ name = "火枪手",		id = Enums.CharacterClassType.GUNCRUSHER },
+	{ name = "光明法师",	id = Enums.CharacterClassType.LIGHTWIZARD },
+	{ name = "圣光学者",	id = Enums.CharacterClassType.LEMURIAMAGE },
+	{ name = "赤色战士",	id = Enums.CharacterClassType.ILLUSIONKNIGHT },
+	{ name = "炼金术士",		id = Enums.CharacterClassType.ALCHEMIST },
+	{ name = "圣骑士",		id = Enums.CharacterClassType.CRUSADER }
 }
--- Usage: for i, class in ipairs(Enums.CharacterClassTypeName) do print(class.name) end
+-- 用法: for i, class in ipairs(Enums.CharacterClassTypeName) do print(class.name) end
 
 Enums.CharacterClassGender = {
-	MALE	= 0,
-	FEMALE	= 1
+	MALE	= 0,	-- 男性
+	FEMALE	= 1		-- 女性
 }
--- Usage: if gender == Enums.CharacterClassGender.FEMALE then print("Female character") end
+-- 用法: if gender == Enums.CharacterClassGender.FEMALE then print("女性角色") end
 
--- Character Stat Type
+-- 角色属性类型
 Enums.StatType = {
-	STRENGTH = 0,
-	AGILITY = 1,
-	VITALITY = 2,
-	ENERGY = 3,
-	COMMAND = 4,
+	STRENGTH = 0,	-- 力量
+	AGILITY = 1,	-- 敏捷
+	VITALITY = 2,	-- 体力
+	ENERGY = 3,	-- 智力
+	COMMAND = 4,	-- 统率
 }
--- Usage: if statType == Enums.StatType.STRENGTH then oPlayer.userData.Strength = oPlayer.userData.Strength + 1 end
+-- 用法: if statType == Enums.StatType.STRENGTH then oPlayer.userData.Strength = oPlayer.userData.Strength + 1 end
 
--- Object Types
+-- 对象类型
 Enums.ObjectType = {
 	EMPTY = -1,
-	USER = 1,
-	MONSTER = 2,
-	NPC = 3,
+	USER = 1,	-- 玩家
+	MONSTER = 2,	-- 怪物
+	NPC = 3,	-- NPC
 }
--- Usage: if oPlayer.Type == Enums.ObjectType.USER then print("Player object") end
+-- 用法: if oPlayer.Type == Enums.ObjectType.USER then print("Player object") end
 
--- NPC Types
+-- NPC 类型
 Enums.NPCType = {
 	NONE = 0,
-	SHOP = 1,
-	WAREHOUSE = 2,
-	CHAOS_MIX = 3,
-	GOLDEN_ARCHER = 4,
-	PENTAGRAM_MIX = 5,
+	SHOP = 1,	-- 商店
+	WAREHOUSE = 2,	-- 仓库使者
+	CHAOS_MIX = 3,	-- 哥布林合成
+	GOLDEN_ARCHER = 4,	--
+	PENTAGRAM_MIX = 5,	-- 艾尔特合成
 	MAP_MOVE = 6,
 	LAST_MAN_STANDING = 7,
 }
--- Usage: if oPlayer.NPCType == Enums.NPCType.SHOP then print("This is shop NPC") end
+-- 用法: if oPlayer.NPCType == Enums.NPCType.SHOP then print("This is shop NPC") end
 
--- Player Connection States
+-- 玩家连接状态
 Enums.PlayerState = {
 	EMPTY = 0,
-	CONNECTED = 1,
-	LOGGED = 2,
-	PLAYING = 3,
+	CONNECTED = 1,	-- 已连接
+	LOGGED = 2,		-- 已登出
+	PLAYING = 3,	-- 在线
 }
--- Usage: if oPlayer.Connected == Enums.PlayerState.PLAYING then print("Player is playing") end
+-- 用法: if oPlayer.Connected == Enums.PlayerState.PLAYING then print("Player is playing") end
 
 Enums.ElementType = {
 	NONE = 0,
-	FIRE = 1,
-	WATER = 2,
-	EARTH = 3,
-	WIND = 4,
-	DARKNESS = 5,
+	FIRE = 1,	-- 火元素
+	WATER = 2,	-- 水元素
+	EARTH = 3,	-- 土元素
+	WIND = 4,	-- 风元素
+	DARKNESS = 5,	-- 暗元素
 }
--- Usage: Object.AddMonster(monClass, mapNumber, x1, y1, x2, y2, Enums.ElementType.FIRE)
--- Usage: if oMonster.PentagramMainAttribute == Enums.ElementType.WATER then print("Water element") end
+-- 用法: Object.AddMonster(monClass, mapNumber, x1, y1, x2, y2, Enums.ElementType.FIRE)
+-- 用法: if oMonster.PentagramMainAttribute == Enums.ElementType.WATER then print("Water element") end
 
 Enums.ItemBagType = {
-	DROP = 0,
-	INVENTORY = 1,
-	MONSTER = 2,
-	EVENT = 3
+	DROP = 0,	-- 掉落地上
+	INVENTORY = 1,	-- 背包掉落
+	MONSTER = 2,	-- 怪物掉落
+	EVENT = 3	-- 活动掉落
 }
--- Usage: ItemBag.Use(oPlayer.Index, Enums.ItemBagType.DROP, itemId, itemLevel)
--- Usage: ItemBag.Use(oPlayer.Index, Enums.ItemBagType.INVENTORY, itemId, itemLevel)
--- Usage: ItemBag.Use(oPlayer.Index, Enums.ItemBagType.MONSTER, monsterClass, oPlayer.Index)
--- Usage: ItemBag.Use(oPlayer.Index, Enums.ItemBagType.EVENT, eventBagId, oPlayer.Index)
+-- 用法: ItemBag.Use(oPlayer.Index, Enums.ItemBagType.DROP, itemId, itemLevel)
+-- 用法: ItemBag.Use(oPlayer.Index, Enums.ItemBagType.INVENTORY, itemId, itemLevel)
+-- 用法: ItemBag.Use(oPlayer.Index, Enums.ItemBagType.MONSTER, monsterClass, oPlayer.Index)
+-- 用法: ItemBag.Use(oPlayer.Index, Enums.ItemBagType.EVENT, eventBagId, oPlayer.Index)
 
 Enums.HPManaUpdateFlag = {
 	INVENTORY_STATE_RESET = 253, -- SendLife only: restores inventory interaction after a failed item operation
 	MAX_HP_MANA = 254, -- Sends maximum HP/Shield or Mana/AG values (after stat change, level up, buff)
 	CURRENT_HP_MANA = 255, -- Sends current HP/Shield or Mana/AG values (actual live update)
 }
--- Usage: Player.SendLife(iPlayerIndex, oPlayer.Life, Enums.HPManaUpdateFlag.CURRENT_HP_MANA, oPlayer.Shield)
--- Usage: Player.SendLife(iPlayerIndex, (oPlayer.MaxLife + oPlayer.AddLife), Enums.HPManaUpdateFlag.MAX_HP_MANA, (oPlayer.MaxShield + oPlayer.AddShield))
--- Usage: Player.SendMana(iPlayerIndex, oPlayer.Mana, Enums.HPManaUpdateFlag.CURRENT_HP_MANA, oPlayer.BP)
--- Usage: Player.SendMana(iPlayerIndex, (oPlayer.MaxMana + oPlayer.AddMana), Enums.HPManaUpdateFlag.MAX_HP_MANA, oPlayer.MaxBP)
+-- 用法: Player.SendLife(iPlayerIndex, oPlayer.Life, Enums.HPManaUpdateFlag.CURRENT_HP_MANA, oPlayer.Shield)
+-- 用法: Player.SendLife(iPlayerIndex, (oPlayer.MaxLife + oPlayer.AddLife), Enums.HPManaUpdateFlag.MAX_HP_MANA, (oPlayer.MaxShield + oPlayer.AddShield))
+-- 用法: Player.SendMana(iPlayerIndex, oPlayer.Mana, Enums.HPManaUpdateFlag.CURRENT_HP_MANA, oPlayer.BP)
+-- 用法: Player.SendMana(iPlayerIndex, (oPlayer.MaxMana + oPlayer.AddMana), Enums.HPManaUpdateFlag.MAX_HP_MANA, oPlayer.MaxBP)
 
 Enums.VipMode = {
 	NONE = -1,
@@ -135,49 +135,49 @@ Enums.VipMode = {
 	NIGHT = 1,
 	MAX = 2, 
 };
--- Usage: if oPlayer.userData.VipMode == Enums.VipMode.NIGHT then print("Night Vip rates applies") end
+-- 用法: if oPlayer.userData.VipMode == Enums.VipMode.NIGHT then print("Night Vip rates applies") end
 
--- ITEM CATEGORY
+-- ITEM 类型
 Enums.ItemCategory = {
 	NONE = 0,
-	NORMAL = 1,
-	SOCKET = 2,
-	ITEM_380 = 3,
-	LUCKY = 4,
-	EVENT = 5,
+	NORMAL = 1,		-- 普通物品
+	SOCKET = 2,		-- 镶嵌物品
+	ITEM_380 = 3,	-- 380装备
+	LUCKY = 4,		-- 幸运物品
+	EVENT = 5,		-- 活动物品
 	ABSOLUTE_1ST = 6,
-	CHAOS = 7,
+	CHAOS = 7,	-- 合成物品
 	ABSOLUTE_2ND = 8,
-	ARTIFACT = 9,
-	ABILITY_CARD = 10,
-	LEGENDARY_1ST = 11,
-	LEGENDARY_2ND = 12,
+	ARTIFACT = 9,	-- 神器
+	ABILITY_CARD = 10,	-- 能力卡片
+	LEGENDARY_1ST = 11,	-- 传奇一代
+	LEGENDARY_2ND = 12,	-- 传奇二代
 }
--- Usage: if attr.ItemCategory == Enums.ItemCategory.LEGENDARY_1ST then print("1st generation legendary") end
+-- 用法: if attr.ItemCategory == Enums.ItemCategory.LEGENDARY_1ST then print("1st generation legendary") end
 
--- LEGENDARY ITEM GRADE
+-- 传奇装备 ITEM GRADE
 Enums.LegendaryGrade = {
 	NON_LEGENDARY = 0,
-	TEMPLE_GUARD = 1,
-	IMPERIAL = 2,
+	TEMPLE_GUARD = 1,	-- 神庙
+	IMPERIAL = 2,		-- 帝国
 }
--- Usage: if attr.LegendaryGrade == Enums.LegendaryGrade.IMPERIAL then print("Imperial legendary item") end
+-- 用法: if attr.LegendaryGrade == Enums.LegendaryGrade.IMPERIAL then print("Imperial legendary item") end
 
--- MASTERY ITEM GRADE
+-- 精通装备 ITEM GRADE
 Enums.MasteryGrade = {
 	NON_MASTERY = 0,
-	BLOOD_ANGEL = 1,
-	DARK_ANGEL = 2,
-	HOLY_ANGEL = 3,
-	AWAKENING_SOUL = 4,
-	BLUE_EYE = 5,
-	SILVER_HEART = 6,
-	MANTICORE = 7,
-	BRILLIANT = 8,
-	APOCALYPSE = 9,
-	LIGHTNING = 10,
+	BLOOD_ANGEL = 1,	-- 血色
+	DARK_ANGEL = 2,		-- 暗黑
+	HOLY_ANGEL = 3,		-- 圣天使
+	AWAKENING_SOUL = 4,	-- 灵魂
+	BLUE_EYE = 5,		-- 雪狼
+	SILVER_HEART = 6,	-- 银心
+	MANTICORE = 7,		-- 噬魂
+	BRILLIANT = 8,		-- 辉煌
+	APOCALYPSE = 9,		-- 末世
+	LIGHTNING = 10,		-- 雷霆
 }
--- Usage: if attr.MasteryGrade == Enums.MasteryGrade.BLOOD_ANGEL then print("Blood Angel mastery item") end
+-- 用法: if attr.MasteryGrade == Enums.MasteryGrade.BLOOD_ANGEL then print("Blood Angel mastery item") end
 
 -- ITEM KIND A
 Enums.ItemKindA = {
@@ -233,7 +233,7 @@ Enums.ItemKindA = {
 	MASTERY_RUNEWIZARD_SHIELD = 55,
 	LEGENDARY_RUNEWIZARD_SHIELD = 56,
 }
--- Usage: if attr.ItemKindA == Enums.ItemKindA.WEAPON then print("This is a weapon") end
+-- 用法: if attr.ItemKindA == Enums.ItemKindA.WEAPON then print("This is a weapon") end
 
 -- ITEM KIND B
 Enums.ItemKindB = {
@@ -356,155 +356,155 @@ Enums.ItemKindB = {
 	CASH_SETITEM_ARMOR = 121,
 	CRUSADER_HAMMER = 123,
 }
--- Usage: if attr.ItemKindB == Enums.ItemKindB.SWORD_KNIGHT then print("Knight sword") end
+-- 用法: if attr.ItemKindB == Enums.ItemKindB.SWORD_KNIGHT then print("Knight sword") end
 
--- Map Index
+-- 地图 Index
 Enums.MapIndex = {
-	LORENCIA = 0,
-	DUNGEON = 1,
-	DEVIAS = 2,
-	NORIA = 3,
-	LOSTTOWER = 4,
-	RESERVED = 5,
-	BATTLESOCCER = 6,
-	ATHLANSE = 7,
-	TARKAN = 8,
-	DEVILSQUARE = 9,
-	ICARUS = 10,
-	BLOODCASTLE1 = 11,
-	BLOODCASTLE2 = 12,
-	BLOODCASTLE3 = 13,
-	BLOODCASTLE4 = 14,
-	BLOODCASTLE5 = 15,
-	BLOODCASTLE6 = 16,
-	BLOODCASTLE7 = 17,
-	CHAOSCASTLE1 = 18,
-	CHAOSCASTLE2 = 19,
-	CHAOSCASTLE3 = 20,
-	CHAOSCASTLE4 = 21,
-	CHAOSCASTLE5 = 22,
-	CHAOSCASTLE6 = 23,
-	KALIMA1 = 24,
-	KALIMA2 = 25,
-	KALIMA3 = 26,
-	KALIMA4 = 27,
-	KALIMA5 = 28,
-	KALIMA6 = 29,
-	CASTLESIEGE = 30,
-	CASTLEHUNTZONE = 31,
-	DEVILSQUARE2 = 32,
-	AIDA = 33,
-	CRYWOLF_FIRSTZONE = 34,
-	CRYWOLF_SECONDZONE = 35,
-	KALIMA7 = 36,
-	KANTURU1 = 37,
-	KANTURU2 = 38,
-	KANTURU_BOSS = 39,
-	GM_MAP = 40,
-	CHANGEUP_3RD_QUEST = 41,
-	CHANGEUP_3RD_BOSS_QUEST = 42,
-	ILLUSION_TEMPLE1 = 45,
-	ILLUSION_TEMPLE2 = 46,
-	ILLUSION_TEMPLE3 = 47,
-	ILLUSION_TEMPLE4 = 48,
-	ILLUSION_TEMPLE5 = 49,
-	ILLUSION_TEMPLE6 = 50,
-	ELBELAND = 51,
-	BLOODCASTLE8 = 52,
-	CHAOSCASTLE7 = 53,
-	SWAMP_OF_CALMNESS = 56,
-	RAKLION_FIELD = 57,
-	RAKLION_BOSS = 58,
-	XMASEVENT = 62,
-	VULCANUS = 63,
-	PKFIELD = 64,
-	DOPPELGANGER_1 = 65,
-	DOPPELGANGER_2 = 66,
-	DOPPELGANGER_3 = 67,
-	DOPPELGANGER_4 = 68,
-	PARTYDUNGEON_DAYOFWEEK1 = 69,
-	PARTYDUNGEON_DAYOFWEEK2 = 70,
-	PARTYDUNGEON_DAYOFWEEK3 = 71,
-	PARTYDUNGEON_DAYOFWEEK4 = 72,
-	ROREN_MARKET = 79,
-	KARUTAN_1 = 80,
-	KARUTAN_2 = 81,
-	DOPPELGANGER_RENEWAL_1 = 82,
-	DOPPELGANGER_RENEWAL_2 = 83,
-	DOPPELGANGER_RENEWAL_3 = 84,
-	DOPPELGANGER_RENEWAL_4 = 85,
-	DOPPELGANGER_RENEWAL_5 = 86,
-	DOPPELGANGER_RENEWAL_6 = 87,
-	DOPPELGANGER_RENEWAL_7 = 88,
-	DOPPELGANGER_RENEWAL_8 = 89,
-	DOPPELGANGER_RENEWAL_9 = 90,
-	ACHERON = 91,
-	ARCABATTLE = 92,
-	DEVENTER = 95,
-	ARCABATTLE_DEVENTER = 96,
-	CCF = 97,
-	ITL1 = 98,
-	ITL2 = 99,
-	URUK_MOUNTAIN = 100,
-	URUK_MOUNTAIN2 = 101,
-	DSF = 102,
-	DSN_0 = 103,
-	DSN_1 = 104,
-	DSN_2 = 105,
-	DSN_3 = 106,
-	NARS = 110,
-	ARCABATTLE_NARS = 111,
-	FEREA = 112,
-	NIXIES_LAKE = 113,
-	INSTANCE_ZONE = 114,
-	INSTANCE_LABYRINTH = 115,
-	DEEPDUNGEON1 = 116,
-	DEEPDUNGEON2 = 117,
-	DEEPDUNGEON3 = 118,
-	DEEPDUNGEON4 = 119,
-	DEEPDUNGEON5 = 120,
-	INSTANCE_4THQUEST = 121,
-	SWAMP_OF_DARKNESS = 122,
-	KUBERA_FIRE = 123,
-	KUBERA_WATER = 124,
-	KUBERA_EARTH = 125,
-	KUBERA_WIND = 126,
-	KUBERA_DARKNESS = 127,
-	ABYSS_ATLANS1 = 128,
-	ABYSS_ATLANS2 = 129,
-	ABYSS_ATLANS3 = 130,
-	SCORCHED_CANYON = 131,
-	RED_SMOKE_ICARUS = 132,
-	ARENIL_TEMPLE = 133,
-	ASHY_AIDA = 134,
-	KETHOTUM = 135,
-	BLAZE_KETHOTUM = 136,
-	KANTURU_UNDERGROUND = 137,
-	VOLCANO_IGNIS = 138,
-	BOSSBATTLE = 139,
-	BLOODY_TARKAN = 140,
-	TORMENTA_ISLAND = 141,
-	TWISTED_KARUTAN = 142,
-	KARDAMAHAL_UNDERGROUND = 143,
-	SWAMP_OF_DESTRUCTION = 144,
-	AQUILA_TEMPLE = 145,
-	MAX = 146,
+	LORENCIA = 0,	-- 勇者大陆
+	DUNGEON = 1,	-- 地下城
+	DEVIAS = 2,	-- 冰风谷
+	NORIA = 3,	-- 仙踪林
+	LOSTTOWER = 4,	-- 失落之塔
+	RESERVED = 5,	-- 流放地
+	BATTLESOCCER = 6,	-- 古战场
+	ATHLANSE = 7,	-- 亚特兰蒂斯
+	TARKAN = 8,	-- 死亡沙漠
+	DEVILSQUARE = 9,	-- 恶魔广场 1-4
+	ICARUS = 10,	-- 天空之城
+	BLOODCASTLE1 = 11,	-- 血色城堡 1
+	BLOODCASTLE2 = 12,	-- 血色城堡 2
+	BLOODCASTLE3 = 13,	-- 血色城堡 3
+	BLOODCASTLE4 = 14,	-- 血色城堡 4
+	BLOODCASTLE5 = 15,	-- 血色城堡 5
+	BLOODCASTLE6 = 16,	-- 血色城堡 6
+	BLOODCASTLE7 = 17,	-- 血色城堡 7
+	CHAOSCASTLE1 = 18,	-- 赤色要塞 1
+	CHAOSCASTLE2 = 19,	-- 赤色要塞 2
+	CHAOSCASTLE3 = 20,	-- 赤色要塞 3
+	CHAOSCASTLE4 = 21,	-- 赤色要塞 4
+	CHAOSCASTLE5 = 22,	-- 赤色要塞 5
+	CHAOSCASTLE6 = 23,	-- 赤色要塞 6
+	KALIMA1 = 24,	-- 卡利玛神庙 1
+	KALIMA2 = 25,	-- 卡利玛神庙 2
+	KALIMA3 = 26,	-- 卡利玛神庙 3
+	KALIMA4 = 27,	-- 卡利玛神庙 4
+	KALIMA5 = 28,	-- 卡利玛神庙 5
+	KALIMA6 = 29,	-- 卡利玛神庙 6
+	CASTLESIEGE = 30,	-- 罗兰峡谷
+	CASTLEHUNTZONE = 31,	-- 魔炼之地
+	DEVILSQUARE2 = 32,	-- 恶魔广场5-7
+	AIDA = 33,	-- 幽暗深林1-2
+	CRYWOLF_FIRSTZONE = 34,	-- 狼魂要塞 P1
+	CRYWOLF_SECONDZONE = 35,	-- 狼魂要塞 P2
+	KALIMA7 = 36,	-- 卡利玛神庙 7
+	KANTURU1 = 37,	-- 坎特鲁废墟
+	KANTURU2 = 38,	-- 坎特鲁遗址
+	KANTURU_BOSS = 39,	-- 坎特鲁[提炼之塔]
+	GM_MAP = 40,	--
+	CHANGEUP_3RD_QUEST = 41,	--
+	CHANGEUP_3RD_BOSS_QUEST = 42,	--
+	ILLUSION_TEMPLE1 = 45,	-- 幻影寺庙 1
+	ILLUSION_TEMPLE2 = 46,	-- 幻影寺庙 2
+	ILLUSION_TEMPLE3 = 47,	-- 幻影寺庙 3
+	ILLUSION_TEMPLE4 = 48,	-- 幻影寺庙 4
+	ILLUSION_TEMPLE5 = 49,	-- 幻影寺庙 5
+	ILLUSION_TEMPLE6 = 50,	-- 幻影寺庙 6
+	ELBELAND = 51,	--
+	BLOODCASTLE8 = 52,	--
+	CHAOSCASTLE7 = 53,	--
+	SWAMP_OF_CALMNESS = 56,	--
+	RAKLION_FIELD = 57,	--
+	RAKLION_BOSS = 58,	--
+	XMASEVENT = 62,	--
+	VULCANUS = 63,	--
+	PKFIELD = 64,	--
+	DOPPELGANGER_1 = 65,	-- 生魂广场 1
+	DOPPELGANGER_2 = 66,	-- 生魂广场 2
+	DOPPELGANGER_3 = 67,	-- 生魂广场 3
+	DOPPELGANGER_4 = 68,	-- 生魂广场 4
+	PARTYDUNGEON_DAYOFWEEK1 = 69,	--
+	PARTYDUNGEON_DAYOFWEEK2 = 70,	--
+	PARTYDUNGEON_DAYOFWEEK3 = 71,	--
+	PARTYDUNGEON_DAYOFWEEK4 = 72,	--
+	ROREN_MARKET = 79,	--
+	KARUTAN_1 = 80,	--
+	KARUTAN_2 = 81,	--
+	DOPPELGANGER_RENEWAL_1 = 82,	--
+	DOPPELGANGER_RENEWAL_2 = 83,	--
+	DOPPELGANGER_RENEWAL_3 = 84,	--
+	DOPPELGANGER_RENEWAL_4 = 85,	--
+	DOPPELGANGER_RENEWAL_5 = 86,	--
+	DOPPELGANGER_RENEWAL_6 = 87,	--
+	DOPPELGANGER_RENEWAL_7 = 88,	--
+	DOPPELGANGER_RENEWAL_8 = 89,	--
+	DOPPELGANGER_RENEWAL_9 = 90,	--
+	ACHERON = 91,	--
+	ARCABATTLE = 92,	--
+	DEVENTER = 95,	--
+	ARCABATTLE_DEVENTER = 96,	--
+	CCF = 97,	--
+	ITL1 = 98,	--
+	ITL2 = 99,	--
+	URUK_MOUNTAIN = 100,	--
+	URUK_MOUNTAIN2 = 101,	--
+	DSF = 102,	--
+	DSN_0 = 103,	--
+	DSN_1 = 104,	--
+	DSN_2 = 105,	--
+	DSN_3 = 106,	--
+	NARS = 110,	--
+	ARCABATTLE_NARS = 111,	--
+	FEREA = 112,	--
+	NIXIES_LAKE = 113,	--
+	INSTANCE_ZONE = 114,	--
+	INSTANCE_LABYRINTH = 115,	--
+	DEEPDUNGEON1 = 116,	-- 深渊地下城 1
+	DEEPDUNGEON2 = 117,	-- 深渊地下城 2
+	DEEPDUNGEON3 = 118,	-- 深渊地下城 3
+	DEEPDUNGEON4 = 119,	-- 深渊地下城 4
+	DEEPDUNGEON5 = 120,	-- 深渊地下城 5
+	INSTANCE_4THQUEST = 121,	--
+	SWAMP_OF_DARKNESS = 122,	--
+	KUBERA_FIRE = 123,	-- 库贝拉矿山 火
+	KUBERA_WATER = 124,	-- 库贝拉矿山 水
+	KUBERA_EARTH = 125,	-- 库贝拉矿山 土
+	KUBERA_WIND = 126,	-- 库贝拉矿山 风
+	KUBERA_DARKNESS = 127,	-- 库贝拉矿山 暗
+	ABYSS_ATLANS1 = 128,	-- 深渊亚特兰蒂斯 1
+	ABYSS_ATLANS2 = 129,	-- 深渊亚特兰蒂斯 2
+	ABYSS_ATLANS3 = 130,	-- 深渊亚特兰蒂斯 3
+	SCORCHED_CANYON = 131,	--
+	RED_SMOKE_ICARUS = 132,	--
+	ARENIL_TEMPLE = 133,	--
+	ASHY_AIDA = 134,	--
+	KETHOTUM = 135,	--
+	BLAZE_KETHOTUM = 136,	--
+	KANTURU_UNDERGROUND = 137,	--
+	VOLCANO_IGNIS = 138,	--
+	BOSSBATTLE = 139,	--
+	BLOODY_TARKAN = 140,	--
+	TORMENTA_ISLAND = 141,	--
+	TWISTED_KARUTAN = 142,	--
+	KARDAMAHAL_UNDERGROUND = 143,	--
+	SWAMP_OF_DESTRUCTION = 144,	--
+	AQUILA_TEMPLE = 145,	--
+	MAX = 146,	--
 }
--- Usage: if oPlayer.MapNumber == Enums.MapIndex.LORENCIA then print("Player in Lorencia") end
+-- 用法: if oPlayer.MapNumber == Enums.MapIndex.LORENCIA then print("Player in Lorencia") end
 
--- RESISTANCE TYPES
+-- 元素抵抗 类型
 Enums.ResistanceType = {
-	ICE = 0,
-	POISON = 1,
-	LIGHTNING = 2,
-	FIRE = 3,
-	EARTH = 4,
-	WIND = 5,
-	WATER = 6,
+	ICE = 0,	-- 冰
+	POISON = 1,	-- 毒
+	LIGHTNING = 2,	-- 雷
+	FIRE = 3,	-- 火
+	EARTH = 4,	-- 土
+	WIND = 5,	-- 风
+	WATER = 6,	-- 水
 	MAX = 7,
 }
--- Usage: local fireRes = item:GetResistance(Enums.ResistanceType.FIRE)
--- Usage: for i = 0, Enums.ResistanceType.MAX - 1 do local res = item:GetResistance(i) end
+-- 用法: local fireRes = item:GetResistance(Enums.ResistanceType.FIRE)
+-- 用法: for i = 0, Enums.ResistanceType.MAX - 1 do local res = item:GetResistance(i) end
 
 -- Event Types (for Event Scheduler)
 Enums.EventType = {
@@ -512,7 +512,7 @@ Enums.EventType = {
 	SAMPLE_EVENT_2 = 1,
 	SAMPLE_EVENT_3 = 2,
 }
--- Usage: if eventType == Enums.EventType.SAMPLE_EVENT_1 then print("Sample Event 1 Started!") end
+-- 用法: if eventType == Enums.EventType.SAMPLE_EVENT_1 then print("Sample Event 1 Started!") end
 
 Enums.LogColor = {
 	AliceBlue			= Helpers.RGB(0xF0, 0xF8, 0xFF),
@@ -656,9 +656,9 @@ Enums.LogColor = {
 	WhiteSmoke			= Helpers.RGB(0xF5, 0xF5, 0xF5),
 	Yellow				= Helpers.RGB(0xFF, 0xFF, 0x00)
 }
--- Usage: Log.AddC(Enums.LogColor.Red, "Error message")
+-- 用法: Log.AddC(Enums.LogColor.Red, "Error message")
 
--- Buff Types (buff identification)
+-- Buff 类型 (buff identification)
 Enums.BuffType = {
 	NONE = 0,
 	ATTACK_POWER_INC = 1,
@@ -1075,7 +1075,7 @@ Enums.BuffType = {
 	CONTRACT_MANA_ITEM = 457,
 	CONTRACT_AG_ITEM = 458,
 }
--- Usage: Buff.Add(playerIndex, Enums.BuffType.BLESS, Enums.EffectType.IMPROVE_DAMAGE, 50, 0, 0, 60, 0, 0)
+-- 用法: Buff.Add(playerIndex, Enums.BuffType.BLESS, Enums.EffectType.IMPROVE_DAMAGE, 50, 0, 0, 60, 0, 0)
 
 -- Buff Effect Types (what the buff does mechanically)
 Enums.EffectType = {
@@ -1189,7 +1189,7 @@ Enums.EffectType = {
 	CUSTOM_DEFENSE = 253,
 	CUSTOM_DAMAGE = 254,
 }
--- Usage: Buff.Add(playerIndex, buffType, Enums.EffectType.IMPROVE_DAMAGE, value, 0, 0, duration, 0, sourceIndex)
+-- 用法: Buff.Add(playerIndex, buffType, Enums.EffectType.IMPROVE_DAMAGE, value, 0, 0, duration, 0, sourceIndex)
 
 Enums.eLANGUAGE_TEXT_TYPE = {
 	COMMON = 0,
@@ -1200,5 +1200,5 @@ Enums.eLANGUAGE_TEXT_TYPE = {
 	VIPSYSTEM = 5,
 	MAX = 6,
 }
--- Usage: local text = Language.GetText(oPlayer.LangCode, Enums.eLANGUAGE_TEXT_TYPE.COMMON, textID)
+-- 用法: local text = Language.GetText(oPlayer.LangCode, Enums.eLANGUAGE_TEXT_TYPE.COMMON, textID)
 

@@ -639,7 +639,7 @@ end
 
 ## 另请参见
 
-- [[PLAYER|Player-Structure]] - 玩家对象参考
-- [[ITEM|Item-Structures]] - 物品结构
-- [[Global-Functions|Global-Functions]] - DB.QueryDS()、DB.QueryJS()
-- [[Callbacks|Callbacks]] - 所有回调函数
+- [PLAYER](Player-Structure.md) - 玩家对象参考
+- [ITEM](Item-Structures.md) - 物品结构
+- [Global-Functions](Global-Functions.md) - DB.QueryDS()、DB.QueryJS()
+- [Callbacks](Callbacks.md) - 所有回调函数

@@ -1690,7 +1690,7 @@ function onDSDBQueryReceive(iUserIndex, iQueryNumber, btIsLastPacket, iCurrentRo
 end
 ```
 
-**参见：** [[Database-Structures|Database-Structures]] 获取详细示例
+**参见：** [Database-Structures](Database-Structures.md) 获取详细示例
 
 ---
 
@@ -1732,7 +1732,7 @@ function onJSDBQueryReceive(iUserIndex, iQueryNumber, btIsLastPacket, iCurrentRo
 end
 ```
 
-**参见：** [[Database-Structures|Database-Structures]] 获取详细示例
+**参见：** [Database-Structures](Database-Structures.md) 获取详细示例
 
 ---
 
@@ -1817,7 +1817,7 @@ end
 
 ## 另请参见
 
-- [[PLAYER|Player-Structure]] - 玩家对象结构
-- [[ITEM|Item-Structures]] - 物品结构
-- [[DATABASE|Database-Structures]] - 数据库查询结构
-- [[GLOBAL_FUNCTIONS|Global-Functions]] - 所有服务器函数
+- [PLAYER](Player-Structure.md) - 玩家对象结构
+- [ITEM](Item-Structures.md) - 物品结构
+- [DATABASE](Database-Structures.md) - 数据库查询结构
+- [GLOBAL_FUNCTIONS](Global-Functions.md) - 所有服务器函数

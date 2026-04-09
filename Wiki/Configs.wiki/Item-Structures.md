@@ -1019,8 +1019,8 @@ end
 
 ## 另请参见
 
-- [[PLAYER|Player-Structure]] - 玩家对象参考
-- [[Global-Functions|Global-Functions]] - 全局函数
+- [PLAYER](Player-Structure.md) - 玩家对象参考
+- [Global-Functions](Global-Functions.md) - 全局函数
 - `Defines/Constants.lua` - 物品常量
 - `Defines/Enums.lua` - 物品枚举
 - `Defines/Helpers.lua` - 辅助函数

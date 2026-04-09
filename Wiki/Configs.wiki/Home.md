@@ -18,9 +18,9 @@ MU Online 服务器 Lua 脚本系统完整文档。
 ## 快速开始
 
 1. **Lua 脚本新手？** 从 [指南](https://www.lua.org/pil/1.html) 开始
-2. **需要函数？** 查看 [[Global-Functions|Global-Functions]]
-3. **处理玩家？** 从 [[Player-Structure|Player-Structure]] 开始
-4. **处理物品？** 查看 [[Item-Structures|Item-Structures]]
+2. **需要函数？** 查看 [Global-Functions](Global-Functions.md)
+3. **处理玩家？** 从 [Player-Structure](Player-Structure.md) 开始
+4. **处理物品？** 查看 [Item-Structures](Item-Structures.md)
 5. **需要示例？** 浏览下面的示例部分
 
 ---
@@ -31,30 +31,30 @@ MU Online 服务器 Lua 脚本系统完整文档。
 
 暴露给 Lua 的游戏服务器对象 - 这些不能被实例化，只能通过函数访问：
 
-- **[[玩家对象|Player-Structure]]** - 主要玩家/角色对象 (stObject)
+- **[Player-Structure](Player-Structure.md)** - 主要玩家/角色对象 (stObject)
   - 玩家字段（Index、Level、Life、Mana 等）
   - userData 子结构（属性、货币、VIP、重置）
   - ActionTickCount 计时器（冷却系统）
   - 方法：`GetInventoryItem()`、`GetWarehouseItem()`
 
-- **[[物品结构|Item-Structures]]** - 物品系统结构
+- **[Item-Structures](Item-Structures.md)** - 物品系统结构
   - ItemAttr（来自 ItemList.txt 的只读模板）
   - CreateItemInfo（创建新物品）
   - ItemInfo（实际物品实例）
   - BagItem（物品袋掉落模板）
 
-- **[[数据库查询结构|Database-Structures]]** - 数据库查询结果
+- **[Database-Structures](Database-Structures.md)** - 数据库查询结果
   - QueryResultDS（DataServer 查询结果）
   - QueryResultJS（JoinServer 查询结果）
   - 查询响应的回调处理器
 
 ### 函数
 
-- **[[全局函数|Global-Functions]]** - 完整 API 参考
+- **[Global-Functions](Global-Functions.md)** - 完整 API 参考
   - 20 个命名空间中 85+ 个函数
   - Server、Player、Item、Inventory、Combat 等
 
-- **[[回调|Callbacks]]** - 事件回调
+- **[Callbacks](Callbacks.md)** - 事件回调
   - 游戏服务器事件（初始化、销毁、加入、离开）
   - 玩家事件（登录、登出、升级、死亡、重生）
   - 物品事件（使用、丢弃、捡取、装备、修理）
@@ -110,7 +110,7 @@ if oPlayer ~= nil then
 end
 ```
 
-**参见：** [[Player-Structure|Player-Structure]]
+**参见：** [Player-Structure](Player-Structure.md)
 
 ### 处理物品
 
@@ -145,7 +145,7 @@ if invItem ~= nil then
 end
 ```
 
-**参见：** [[Item-Structures|Item-Structures]]
+**参见：** [Item-Structures](Item-Structures.md)
 
 ### 冷却系统
 
@@ -163,7 +163,7 @@ else
 end
 ```
 
-**参见：** [[Player-Structure|Player-Structure]] 中的 ActionTickCount 结构部分
+**参见：** [Player-Structure](Player-Structure.md) 中的 ActionTickCount 结构部分
 
 ### 数据库查询
 
@@ -192,7 +192,7 @@ function DSDBQueryReceive(iPlayerIndex, iQueryNumber, bIsLastPacket, iCurrentRow
 end
 ```
 
-**参见：** [[Database-Structures|Database-Structures]] 获取类型转换详情
+**参见：** [Database-Structures](Database-Structures.md) 获取类型转换详情
 
 ### 遍历对象（高性能）
 
@@ -263,7 +263,7 @@ end)
 local oTarget = Object.GetObjByName("PlayerName")  -- 快速查找
 ```
 
-**参见：** [[Global-Functions|Global-Functions]] 中的 Object 命名空间部分
+**参见：** [Global-Functions](Global-Functions.md) 中的 Object 命名空间部分
 
 ---
 
@@ -294,7 +294,7 @@ local oTarget = Object.GetObjByName("PlayerName")  -- 快速查找
 | `Utility` | 3 | 随机数、特效 |
 | `Log` | 2 | 服务器日志 |
 
-**参见：** [[Global-Functions|Global-Functions]]
+**参见：** [Global-Functions](Global-Functions.md)
 
 ---
 
@@ -375,15 +375,15 @@ end
 
 ### 初学者
 
-1. 阅读 [[Player-Structure|Player-Structure]] 了解玩家对象
-2. 查看 [[Global-Functions|Global-Functions]] 了解基本函数
+1. 阅读 [Player-Structure](Player-Structure.md) 了解玩家对象
+2. 查看 [Global-Functions](Global-Functions.md) 了解基本函数
 3. 浏览结构文档中的示例
 4. 查看 `Callbacks.lua` 了解事件模式
 
 ### 中级
 
-1. 学习 [[Item-Structures|Item-Structures]] 了解物品系统
-2. 学习 [[Callbacks|Callbacks]] 中的数据库查询
+1. 学习 [Item-Structures](Item-Structures.md) 了解物品系统
+2. 学习 [Callbacks](Callbacks.md) 中的数据库查询
 3. 使用 ActionTickCount 实现冷却系统
 4. 创建自定义事件处理器
 

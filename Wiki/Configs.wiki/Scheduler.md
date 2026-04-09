@@ -637,5 +637,5 @@ end
 - EventNotice 是 C++ 用户类型 - 直接访问字段，不是方法
 
 ## 另请参见
-- [[Timer API|Timers]] - 自定义计时器
-- [[Message API|Player-Structure]] - 事件公告
+- [Timer API](Timers.md) - 自定义计时器
+- [Message API](Player-Structure.md) - 事件公告

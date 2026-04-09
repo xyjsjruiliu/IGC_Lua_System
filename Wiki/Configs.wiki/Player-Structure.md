@@ -632,7 +632,7 @@ end
 
 ## 另请参见
 
-- [[GLOBAL_FUNCTIONS|Global-Functions]] - 完整函数参考
-- [[CALLBACKS|Callbacks]] - 事件回调参考
+- [GLOBAL_FUNCTIONS](Global-Functions.md) - 完整函数参考
+- [CALLBACKS](Callbacks.md) - 事件回调参考
 - `Constants.lua` - 游戏常量
 - `Enums.lua` - 枚举值

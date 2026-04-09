@@ -3428,8 +3428,8 @@ Log.AddC(Helpers.RGB(255, 0, 255), "自定义洋红色消息")
 
 ## 另请参见
 
-- [[CALLBACKS|Callbacks]] - 事件回调参考
-- [[Player-Structure|Player-Structure]] - 玩家对象结构
-- [[Item-Structures|Item-Structures]] - 物品结构
-- [[Database-Structures|Database-Structures]] - 数据库查询结构
+- [CALLBACKS](Callbacks.md) - 事件回调参考
+- [Player-Structure](Player-Structure.md) - 玩家对象结构
+- [Item-Structures](Item-Structures.md) - 物品结构
+- [Database-Structures](Database-Structures.md) - 数据库查询结构
 - `Defines/GlobalFunctions.lua` - IDE 类型提示

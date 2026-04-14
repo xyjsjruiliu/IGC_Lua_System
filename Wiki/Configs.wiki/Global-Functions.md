@@ -552,9 +552,9 @@ Object.ForEachMonsterByClass(monsterClass, callback)
 
 **用法：**
 ```lua
--- 查找所有黄金哥布林
+-- 查找所有昆顿
 Object.ForEachMonsterByClass(275, function(oMonster)
-    Log.Add(string.format("黄金哥布林: 地图 %d 在 (%d, %d)", 
+    Log.Add(string.format("昆顿: 地图 %d 在 (%d, %d)", 
         oMonster.MapNumber, oMonster.X, oMonster.Y))
     return true
 end)
@@ -1965,19 +1965,19 @@ end
 Item.IsMasterPentagram(iItemId)
 ```
 
-> ⚠️ **Not available in s6** — This function does not exist in the s6 build.
+> ⚠️ **s6 不可用** — 此函数在 s6 版本中不存在。
 
-**Parameters:**
-- `iItemId` (int): Item ID
+**参数:**
+- `iItemId` (int): 物品 ID
 
-**Returns:** `bool` - `true` if master pentagram item, `false` otherwise
+**返回:** `bool` - 如果是精通元素书则为 `true`，否则为 `false`
 
-**Description:** Returns whether item is a master pentagram type.
+**描述:** 返回物品是否是精通元素书类型。
 
-**Usage:**
+**用法:**
 ```lua
 if Item.IsMasterPentagram(itemId) then
-    -- Handle master pentagram
+    -- 处理 精通元素书
 end
 ```
 
@@ -1989,16 +1989,16 @@ end
 Item.IsPentagramJewel(iItemId)
 ```
 
-> ⚠️ **Not available in s6** — This function does not exist in the s6 build.
+> ⚠️ **s6 不可用** — 此函数在 s6 版本中不存在。
 
-**Parameters:**
-- `iItemId` (int): Item ID
+**参数:**
+- `iItemId` (int): 物品 ID
 
-**Returns:** `bool` - `true` if pentagram jewel, `false` otherwise
+**返回:** `bool` - 如果是pentagram jewel则为 `true`，否则为 `false`
 
-**Description:** Returns whether item is a pentagram jewel.
+**描述:** 返回物品是否是pentagram jewel类型。
 
-**Usage:**
+**用法:**
 ```lua
 if Item.IsPentagramJewel(itemId) then
     -- Handle pentagram jewel
@@ -2013,16 +2013,16 @@ end
 Item.IsMasterPentagramJewel(iItemId)
 ```
 
-> ⚠️ **Not available in s6** — This function does not exist in the s6 build.
+> ⚠️ **s6 不可用** — 此函数在 s6 版本中不存在。
 
-**Parameters:**
-- `iItemId` (int): Item ID
+**参数:**
+- `iItemId` (int): 物品 ID
 
-**Returns:** `bool` - `true` if master pentagram jewel, `false` otherwise
+**描述:** `bool` - 如果是master pentagram jewel则为 `true`，否则为 `false`
 
-**Description:** Returns whether item is a master pentagram jewel.
+**Description:** 返回物品是否是master pentagram jewel类型。
 
-**Usage:**
+**用法:**
 ```lua
 if Item.IsMasterPentagramJewel(itemId) then
     -- Handle master pentagram jewel
@@ -2165,7 +2165,7 @@ Item.MakeRandomSet(iPlayerIndex, 1, false)
 
 ## Monster Namespace
 
-Monster management functions for reading monster data.
+怪物管理函数，用于读取怪物数据。
 
 ### Monster.GetAttr
 
@@ -2173,21 +2173,21 @@ Monster management functions for reading monster data.
 Monster.GetAttr(iClass)
 ```
 
-**Parameters:**
-- `iClass` (int): Monster class ID
+**参数:**
+- `iClass` (int): 怪物职业 ID
 
-**Returns:** `MonsterAttr` - Monster attribute object, or `nil` if not found
+**返回:** `MonsterAttr` - 怪物属性对象，若未找到则返回 `nil`
 
-**Description:** Returns the attribute table for a monster class. Provides access to stats, combat values, resistances and other configuration data for the given monster class ID.
+**描述:** 返回指定怪物职业的属性表。提供对给定怪物职业 ID 的属性、战斗数值、抗性及其他配置数据的访问。
 
 > 📖 See [Monster Structure](Monster-Structure) for full `MonsterAttr` field reference.
 
-**Usage:**
+**用法:**
 ```lua
-local attr = Monster.GetAttr(275) -- Kundun
+local attr = Monster.GetAttr(275) -- 昆顿 Kundun
 if attr ~= nil then
-    Log.Add(string.format("Kundun HP: %d, Defense: %d", attr.HP, attr.Defense))
-    Log.Add(string.format("Name: %s", attr:GetName()))
+    Log.Add(string.format("昆顿 HP: %d, 防御: %d", attr.HP, attr.Defense))
+    Log.Add(string.format("名称: %s", attr:GetName()))
 end
 ```
 
@@ -2195,7 +2195,7 @@ end
 
 ## ItemBag Namespace
 
-Item bag system functions.
+Item bag 系统函数.
 
 ### ItemBag.Add
 

@@ -1461,24 +1461,24 @@ end
 function onUseDurationSkill(oPlayer, aTargetIndex, iSkill, btX, btY, btDir)
 ```
 
-**Type:** Sync (can prevent action)
+**类型:** 同步（可以阻止使用技能）
 
-**Called when:** Player uses a duration-based skill
+**调用时机:** 玩家使用 duration-based 技能
 
-**Parameters:**
+**参数:**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `oPlayer` | object (stObject) | Player using the skill |
-| `aTargetIndex` | integer | Object index of the target |
-| `iSkill` | integer | Skill number |
-| `btX` | integer | Target X coordinate |
-| `btY` | integer | Target Y coordinate |
-| `btDir` | integer | Direction |
+| Parameter | Type | Description               |
+|-----------|------|---------------------------|
+| `oPlayer` | object (stObject) | 使用技能的玩家                   |
+| `aTargetIndex` | integer | 技能目标编号 |
+| `iSkill` | integer | 技能编号                      |
+| `btX` | integer | Target X coordinate       |
+| `btY` | integer | Target Y coordinate       |
+| `btDir` | integer | Direction                 |
 
-**Return value:** Return non-zero to block the skill.
+**返回:** 返回 非-0 则阻止该技能.
 
-**Usage:**
+**用法:**
 ```lua
 function onUseDurationSkill(oPlayer, aTargetIndex, iSkill, btX, btY, btDir)
     if oPlayer ~= nil then
@@ -1496,21 +1496,21 @@ end
 function onUseNormalSkill(oPlayer, oTarget, iSkill)
 ```
 
-**Type:** Sync (can prevent action)
+**类型:** 同步（可以阻止使用技能）
 
-**Called when:** Player uses a normal (instant) skill on a target
+**调用时机:** Player uses a normal (instant) skill on a target
 
-**Parameters:**
+**参数:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `oPlayer` | object (stObject) | Player using the skill |
-| `oTarget` | object (stObject) | Target of the skill |
-| `iSkill` | integer | Skill number |
+| `oPlayer` | object (stObject) | 使用技能的玩家     |
+| `oTarget` | object (stObject) | 技能目标编号      |
+| `iSkill` | integer | 技能编号        |
 
-**Return value:** Return non-zero to block the skill.
+**返回:** 返回 非-0 则阻止该技能.
 
-**Usage:**
+**用法:**
 ```lua
 function onUseNormalSkill(oPlayer, oTarget, iSkill)
     if oPlayer ~= nil and oTarget ~= nil then
@@ -1625,20 +1625,20 @@ end
 function onMossMerchantUse(oPlayer, iSectionId)
 ```
 
-**Type:** Sync (can prevent action)
+**类型:** 同步 (可以阻止动作)
 
-**Called when:** Player interacts with Moss the Merchant
+**调用时机:** Player interacts with 摩斯抽奖
 
-**Parameters:**
+**参数:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | `oPlayer` | object (stObject) | Player using Moss |
 | `iSectionId` | integer | Section/action ID selected by the player |
 
-**Return value:** Return non-zero to block the action.
+**返回:** Return non-zero to block the action.
 
-**Usage:**
+**用法:**
 ```lua
 function onMossMerchantUse(oPlayer, iSectionId)
     if oPlayer ~= nil then

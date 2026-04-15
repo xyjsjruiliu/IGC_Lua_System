@@ -414,12 +414,28 @@ end
 
 -- Called upon target attack attempt (Sync)
 function onCheckUserTarget(oPlayer, oTarget)
-	if (oPlayer ~= nil) then
-		if (oTarget ~= nil) then
+	--if (oPlayer ~= nil) then
+	--	if (oTarget ~= nil) then
+	--
+	--	end
+	--end
+	--return 0
 
-		end
-	end
-	return 0
+	if oPlayer == nil or oTarget == nil then return 0 end
+
+    -- 仅 PvP: 阻止攻击 50 级以下玩家
+    if oTarget.Type == Enums.ObjectType.USER and oTarget.Level < 50 then
+        Message.Send(0, oPlayer.Index, 0, "你不能攻击 50 级以下的玩家。")
+        return 1
+    end
+
+    -- 阻止同公会友军伤害
+    if oTarget.Type == Enums.ObjectType.USER and oPlayer.GuildNumber > 0 and oPlayer.GuildNumber == oTarget.GuildNumber then
+        Message.Send(0, oPlayer.Index, 0, "你不能攻击战盟成员。")
+        return 1
+    end
+
+    return 0
 end
 
 -- Called when player uses a duration-based skill (Sync - return non-zero to block)

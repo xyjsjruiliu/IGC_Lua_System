@@ -192,6 +192,16 @@ function onUseCommand(oPlayer, szCmd)
 		end
 		local cmd = parts[1] or ""
 
+		-- =============================================
+		-- 成就系统命令处理
+		-- 使用方法：
+		--   /成就        - 显示成就列表（第一页）
+		--   /成就 2      - 显示第二页
+		--   /成就 101    - 查看编号101的成就详情
+		-- =============================================
+		--if cmd == "/成就" or cmd == "/chengjiu" or cmd == "/c" then
+		--	return AchievementSystem.HandleCommand(oPlayer, parts)
+		--end
 	end
 	return 0
 end

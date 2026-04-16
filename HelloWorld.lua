@@ -10,3 +10,14 @@ for slot = 12, 75 do
 	--	end
 	--end
 end
+
+szCmd = "/成就 2"
+local parts = {}
+for part in string.gmatch(szCmd, "%S+") do
+	print(part)
+	table.insert(parts, part)
+end
+
+local cmd = parts[1] or ""
+print(cmd)
+print(parts[2])

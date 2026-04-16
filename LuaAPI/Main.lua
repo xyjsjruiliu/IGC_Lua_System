@@ -24,6 +24,10 @@ LoadScript(BASE .. "Callbacks.lua")
 LoadScript(BASE .. "Includes\\TimerHelpers.lua")
 LoadScript(BASE .. "Includes\\EventScheduler.lua")
 LoadScript(BASE .. "Timers.lua")
+--LoadScript(BASE .. "AchievementSystem.lua")
 
 -- 初始化事件调度器
 EventScheduler.Initialize()
+
+-- 执行初始化（此文件被 Main.lua 加载时自动执行）
+--AchievementSystem.Initialize()

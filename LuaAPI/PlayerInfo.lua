@@ -13,6 +13,10 @@
 --   /在线                 - 查看当前在线玩家列表（第一页）
 --   /在线 2               - 查看在线列表第二页
 --   /在线 职业 剑士       - 按职业筛选在线玩家
+--   /背包                 - 查看自己的背包（第一页）
+--   /背包 2               - 查看自己背包的第二页
+--   /背包 玩家名          - 查看指定玩家的背包（需 INVENTORY_SELF_ONLY = false）
+--   /背包 玩家名 2        - 查看指定玩家背包的第二页
 --
 -- [架构说明]
 -- 本系统通过 PlayerInfo.HandleCommand() 处理命令，
@@ -46,6 +50,18 @@ PlayerInfo.SHOW_MONEY = true
 
 --- 是否在查询结果中显示对方装备概览
 PlayerInfo.SHOW_EQUIPMENT_SUMMARY = true
+
+--- 是否允许查询玩家背包（总开关）
+--- 关闭后 /背包 命令和查询面板中的背包信息都不会显示
+PlayerInfo.SHOW_INVENTORY = true
+
+--- 背包查询是否仅限自己（隐私保护）
+--- true  = 只能查看自己的背包
+--- false = 可以查看他人的背包
+PlayerInfo.INVENTORY_SELF_ONLY = true
+
+--- 背包每页显示的物品数量
+PlayerInfo.INVENTORY_PER_PAGE = 8
 
 MapIndex = {
 	{ name = "勇者大陆",	id = 0 },
@@ -472,7 +488,7 @@ function PlayerInfo.DisplayEquipmentSummary(oRequester, oTarget)
 		local item = oTarget:GetInventoryItem(equip.slot)
 		if item and item.IsItemExist then
 			hasAnyEquip = true
-			local itemName = "未知物品"
+			local itemName = "未装备"
 			local itemAttr = Item.GetAttr(item.Type)
 			if itemAttr then
 				itemName = itemAttr:GetName()
@@ -520,6 +536,197 @@ function PlayerInfo.DisplayEquipmentSummary(oRequester, oTarget)
 			Message.Send(0, oRequester.Index, 1, line)
 		end
 	end
+end
+
+------------------------------------------------------------------
+-- 背包查询
+------------------------------------------------------------------
+
+--- 格式化单个物品的显示信息（复用于装备概览和背包查询）
+---@param item ItemInfo 物品对象
+---@return string 物品显示字符串
+function PlayerInfo.FormatItemDisplay(item)
+	local itemName = "空"
+	local itemAttr = Item.GetAttr(item.Type)
+	if itemAttr then
+		itemName = itemAttr:GetName()
+	end
+
+	-- 强化等级
+	local levelStr = ""
+	if item.Level and item.Level > 0 then
+		levelStr = "+" .. item.Level
+	end
+
+	-- 属性标记
+	local options = {}
+	if item.Option1 and item.Option1 ~= 0 then
+		table.insert(options, "幸")
+	end
+	if item.Option2 and item.Option2 ~= 0 then
+		table.insert(options, "技")
+	end
+	if item.Option3 and item.Option3 > 0 then
+		table.insert(options, "+" .. item.Option3)
+	end
+	if item.NewOption and item.NewOption ~= 0 then
+		table.insert(options, "卓")
+	end
+	if item.SetOption and item.SetOption ~= 0 then
+		table.insert(options, "套")
+	end
+
+	local optionStr = ""
+	if #options > 0 then
+		optionStr = "[" .. table.concat(options, "") .. "]"
+	end
+
+	return string.format("%s%s %s", itemName, levelStr, optionStr)
+end
+
+--- 查询并显示玩家背包物品（支持分页）
+---@param oRequester Object 发起查询的玩家
+---@param oTarget Object 被查询的玩家
+---@param page integer 页码（从1开始）
+function PlayerInfo.DisplayInventory(oRequester, oTarget, page)
+	-- 总开关检查
+	if not PlayerInfo.SHOW_INVENTORY then
+		Message.Send(0, oRequester.Index, 3, "【背包】背包查询功能未开启")
+		return
+	end
+
+	-- 隐私检查：仅限查看自己
+	if PlayerInfo.INVENTORY_SELF_ONLY and oRequester.Index ~= oTarget.Index then
+		Message.Send(0, oRequester.Index, 3, "【背包】只能查看自己的背包")
+		return
+	end
+
+	-- 装备槽位范围（跳过这些，只查背包区域）
+	-- 装备栏：0-11, 8(Helper), 236-238（特殊槽位）
+	-- 主背包区域：12 ~ MAIN_INVENTORY_SIZE-1 (12~203)
+	local INV_START = 12
+	local INV_END = 139  -- 203
+
+	-- 收集背包中所有物品
+	local items = {}
+	for slot = INV_START, INV_END do
+		local item = oTarget:GetInventoryItem(slot)
+		if item and not IsItemExist then
+			table.insert(items, {
+				slot  = slot,
+				item  = item,
+			})
+		end
+	end
+
+	local totalItems = #items
+	local usedSlots = totalItems
+	local totalSlots = INV_END - INV_START + 1  -- 192格
+	local perPage = PlayerInfo.INVENTORY_PER_PAGE
+	local totalPages = math.max(1, math.ceil(totalItems / perPage))
+
+	if page < 1 then page = 1 end
+	if page > totalPages then page = totalPages end
+
+	local startIdx = (page - 1) * perPage + 1
+	local endIdx = math.min(page * perPage, totalItems)
+
+	-- 标题
+	local targetName = oTarget.Name or "未知"
+	local isSelf = (oRequester.Index == oTarget.Index)
+	local title = isSelf and "【我的背包】" or string.format("【背包 - %s】", targetName)
+
+	Message.Send(0, oRequester.Index, 1, "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+	Message.Send(0, oRequester.Index, 1, title)
+	Message.Send(0, oRequester.Index, 1,
+		string.format("  物品：%d / %d 格  第 %d/%d 页",
+			usedSlots, totalSlots, page, totalPages))
+	Message.Send(0, oRequester.Index, 1, "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+
+	if totalItems == 0 then
+		Message.Send(0, oRequester.Index, 1, "  背包为空")
+	else
+		for i = startIdx, endIdx do
+			local entry = items[i]
+			local displayStr = PlayerInfo.FormatItemDisplay(entry.item)
+
+			local itemAttr = Item.GetAttr(entry.item.Type)
+			if itemAttr then
+				itemName = itemAttr:GetName()
+				Message.Send(0, oRequester.Index, 1, string.format("  %d. [格%d] %s", i, entry.slot, displayStr))
+			end
+
+		end
+	end
+
+	Message.Send(0, oRequester.Index, 1, "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+	if page < totalPages then
+		Message.Send(0, oRequester.Index, 1,
+			string.format("  使用 /背包 %d 查看下一页", page + 1))
+	end
+end
+
+--- 处理 /背包 命令
+---@param oPlayer Object 发起命令的玩家
+---@param parts table 命令分割后的数组
+---@return integer 1=阻止命令传播, 0=继续传播
+function PlayerInfo.HandleInventoryCommand(oPlayer, parts)
+	if not oPlayer then return 0 end
+
+	-- 总开关检查
+	if not PlayerInfo.SHOW_INVENTORY then
+		Message.Send(0, oPlayer.Index, 3, "【背包】背包查询功能未开启")
+		return 1
+	end
+
+	-- 冷却检查
+	if not PlayerInfo.CheckCooldown(oPlayer) then return 1 end
+
+	local page = 1
+	local targetName = nil
+
+	-- 解析参数：/背包 [页码] 或 /背包 玩家名 [页码]
+	if #parts >= 2 then
+		-- 第一个参数可能是页码或玩家名
+		local num = tonumber(parts[2])
+		if num then
+			page = num
+		else
+			-- 不是数字，当作玩家名
+			targetName = parts[2]
+			-- 检查是否有第三个参数（页码）
+			if #parts >= 3 then
+				local pageNum = tonumber(parts[3])
+				if pageNum then
+					page = pageNum
+				end
+			end
+		end
+	end
+
+	-- 确定查询目标
+	local oTarget
+	local isSelfQuery = (targetName == nil)
+
+	if isSelfQuery then
+		oTarget = oPlayer
+	else
+		-- 隐私检查
+		if PlayerInfo.INVENTORY_SELF_ONLY then
+			Message.Send(0, oPlayer.Index, 3, "【背包】只能查看自己的背包")
+			return 1
+		end
+
+		oTarget = Player.GetObjByName(targetName)
+		if not oTarget then
+			Message.Send(0, oPlayer.Index, 3,
+				string.format("【背包】玩家「%s」不在线或不存在", targetName))
+			return 1
+		end
+	end
+
+	PlayerInfo.DisplayInventory(oPlayer, oTarget, page)
+	return 1
 end
 
 ------------------------------------------------------------------
@@ -733,5 +940,5 @@ end
 function PlayerInfo.Initialize()
 	PlayerInfo._lastQueryTime = {}
 	Log.Add("[玩家信息] 查询系统初始化完成")
-	Log.Add("[玩家信息] 命令列表：/查询 [玩家名]  /在线 [页码|职业名]")
+	Log.Add("[玩家信息] 命令列表：/查询 [玩家名]  /在线 [页码|职业名]  /背包 [页码|玩家名]")
 end

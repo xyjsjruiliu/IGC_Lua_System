@@ -219,6 +219,18 @@ function onUseCommand(oPlayer, szCmd)
 		if cmd == "/在线" or cmd == "/zaixian" or cmd == "/online" then
 			return PlayerInfo.HandleOnlineCommand(oPlayer, parts)
 		end
+
+		-- =============================================
+		-- 背包查询命令
+		-- 使用方法：
+		--   /背包            - 查看自己的背包（第一页）
+		--   /背包 2          - 查看自己背包的第二页
+		--   /背包 玩家名     - 查看指定玩家的背包（需 INVENTORY_SELF_ONLY = false）
+		--   /背包 玩家名 2   - 查看指定玩家背包的第二页
+		-- =============================================
+		if cmd == "/背包" or cmd == "/beibao" or cmd == "/inv" or cmd == "/inventory" then
+			return PlayerInfo.HandleInventoryCommand(oPlayer, parts)
+		end
 	end
 	return 0
 end

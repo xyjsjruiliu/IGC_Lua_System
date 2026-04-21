@@ -202,6 +202,23 @@ function onUseCommand(oPlayer, szCmd)
 		--if cmd == "/成就" or cmd == "/chengjiu" or cmd == "/c" then
 		--	return AchievementSystem.HandleCommand(oPlayer, parts)
 		--end
+
+		-- =============================================
+		-- 玩家信息查询命令
+		-- 使用方法：
+		--   /查询            - 查看自己的详细信息
+		--   /查询 玩家名     - 查看指定玩家的详细信息
+		--   /在线            - 查看在线玩家列表（第一页）
+		--   /在线 2          - 查看在线列表第二页
+		--   /在线 职业 剑士  - 按职业筛选在线玩家
+		-- =============================================
+		if cmd == "/查询" or cmd == "/chaxun" or cmd == "/query" then
+			return PlayerInfo.HandleQueryCommand(oPlayer, parts)
+		end
+
+		if cmd == "/在线" or cmd == "/zaixian" or cmd == "/online" then
+			return PlayerInfo.HandleOnlineCommand(oPlayer, parts)
+		end
 	end
 	return 0
 end

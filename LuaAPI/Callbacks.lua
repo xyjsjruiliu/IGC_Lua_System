@@ -460,29 +460,103 @@ function onCheckUserTarget(oPlayer, oTarget)
 	--end
 	--return 0
 
+	-- 地图等级保护配置: 地图ID = 最低攻击等级（低于此等级的玩家在该地图不能被其他玩家攻击）
+	-- 使用 Enums.MapIndex 中的常量或直接填写数字ID
+	-- 示例配置含义：
+	--   LORENCIA(0)    = 勇者大陆，400级以下不能被攻击
+	-- 添加或删除条目即可调整规则，不需要的地图直接删除对应行即可
+	local MapLevelProtection = {
+		{ name = "勇者大陆",	id = 0 , ProtectionLevel = 400 },
+		{ name = "地下城",	id = 1 , ProtectionLevel = 400 },
+		{ name = "冰风谷",	id = 2 , ProtectionLevel = 400 },
+		{ name = "仙踪林",	id = 3 , ProtectionLevel = 400 },
+		{ name = "失落之塔",	id = 4 , ProtectionLevel = 400 },
+		{ name = "古战场",	id = 6 , ProtectionLevel = 400 },
+		{ name = "亚特兰蒂斯",	id = 7 , ProtectionLevel = 400 },
+		{ name = "死亡沙漠",	id = 8 , ProtectionLevel = 400 },
+		{ name = "天空之城",	id = 10 , ProtectionLevel = 400 },
+		{ name = "幽暗深林1-2",	id = 33 , ProtectionLevel = 400 },
+		{ name = "坎特鲁废墟",	id = 37 , ProtectionLevel = 400 },
+		{ name = "坎特鲁遗址",	id = 38 , ProtectionLevel = 400 },
+		{ name = "幻术园",	id = 51 , ProtectionLevel = 400 },
+		{ name = "安宁池",	id = 56 , ProtectionLevel = 800 },
+		{ name = "冰霜之城",	id = 57 , ProtectionLevel = 800 },
+		{ name = "卡伦特 1",	id = 80 , ProtectionLevel = 800 },
+		{ name = "卡伦特 2",	id = 81 , ProtectionLevel = 800 },
+		{ name = "阿卡伦 1",	id = 91 , ProtectionLevel = 800 },
+		{ name = "阿卡伦 2",	id = 92 , ProtectionLevel = 800 },
+		{ name = "德班泰尔",	id = 95 , ProtectionLevel = 800 },
+		{ name = "乌尔克山 1",	id = 100 , ProtectionLevel = 800 },
+		{ name = "乌尔克山 2",	id = 101 , ProtectionLevel = 800 },
+		{ name = "纳尔斯",	id = 110 , ProtectionLevel = 800 },
+		{ name = "菲利亚",	id = 112 , ProtectionLevel = 800 },
+		{ name = "尼克斯湖",	id = 113 , ProtectionLevel = 900 },
+		{ name = "深渊地下城 1",	id = 116 , ProtectionLevel = 950 },
+		{ name = "深渊地下城 2",	id = 117 , ProtectionLevel = 950 },
+		{ name = "深渊地下城 3",	id = 118 , ProtectionLevel = 950 },
+		{ name = "深渊地下城 4",	id = 119 , ProtectionLevel = 950 },
+		{ name = "深渊地下城 5",	id = 120 , ProtectionLevel = 950 },
+		{ name = "黑暗沼泽",	id = 122 , ProtectionLevel = 1000 },
+		{ name = "库贝拉矿山 火",	id = 123 , ProtectionLevel = 1050 },
+		{ name = "库贝拉矿山 水",	id = 124 , ProtectionLevel = 1050 },
+		{ name = "库贝拉矿山 土",	id = 125 , ProtectionLevel = 1050 },
+		{ name = "库贝拉矿山 风",	id = 126 , ProtectionLevel = 1050 },
+		{ name = "库贝拉矿山 暗",	id = 127 , ProtectionLevel = 1050 },
+		{ name = "深渊亚特兰蒂斯 1",	id = 128 , ProtectionLevel = 1100 },
+		{ name = "深渊亚特兰蒂斯 2",	id = 129 , ProtectionLevel = 1100 },
+		{ name = "深渊亚特兰蒂斯 3",	id = 130 , ProtectionLevel = 1100 },
+		{ name = "焦蛇峡谷",	id = 131 , ProtectionLevel = 1150 },
+		{ name = "红烟天空之城",	id = 132 , ProtectionLevel = 1200 },
+		{ name = "阿尼尔神庙",	id = 133 , ProtectionLevel = 1250 },
+		{ name = "暗魂之森",	id = 134 , ProtectionLevel = 1300 },
+		{ name = "古老克托姆",	id = 135 , ProtectionLevel = 800 },
+		{ name = "火焰克托姆",	id = 136 , ProtectionLevel = 1350 },
+		{ name = "坎特鲁地下区域",	id = 137 , ProtectionLevel = 1400 },
+		{ name = "伊尼格斯火山",	id = 138 , ProtectionLevel = 1400 },
+		{ name = "血腥死亡沙漠",	id = 140 , ProtectionLevel = 1500 },
+		{ name = "托蒙塔岛",	id = 141 , ProtectionLevel = 1500 },
+		{ name = "深渊卡伦特",	id = 142 , ProtectionLevel = 1550 },
+		{ name = "卡达玛哈地下神庙",	id = 143 , ProtectionLevel = 1600 },
+		{ name = "毁灭沼泽",	id = 144 , ProtectionLevel = 1650 },
+		{ name = "阿奎拉斯圣殿",	id = 145 , ProtectionLevel = 1700 },
+	}
+
 	if oPlayer == nil or oTarget == nil then return 0 end
 
     -- 夜间保护: 每天0点~8点不能攻击其他玩家
     if oTarget.Type == Enums.ObjectType.USER then
 		hour = tonumber(os.date("%H"))
 		if hour >= 0 and hour < 8 then
-			print("夜间保护期间（0:00~8:00）无法攻击其他玩家。")
-			--Message.Send(0, oPlayer.Index, 0, "夜间保护期间（0:00~8:00）无法攻击其他玩家。")
-			--return 1
+			--print("夜间保护期间（0:00~8:00）无法攻击其他玩家。")
+			Message.Send(0, oPlayer.Index, 0, "夜间保护期间（0:00~8:00）无法攻击其他玩家。")
+			return 1
 		end
     end
 
-    -- 仅 PvP: 阻止攻击 50 级以下玩家
-    if oTarget.Type == Enums.ObjectType.USER and oTarget.Level < 50 then
-        Message.Send(0, oPlayer.Index, 0, "你不能攻击 50 级以下的玩家。")
-        return 1
+    -- 地图等级保护: 目标玩家在受保护地图中且等级低于该地图要求的保护等级时，阻止攻击
+    if oTarget.Type == Enums.ObjectType.USER then
+        --local minLevel = MapLevelProtection[oTarget.MapNumber]
+		for _, entry in pairs(MapLevelProtection) do
+			if entry.id == oTarget.MapNumber then
+				if entry.ProtectionLevel and oTarget.Level < entry.ProtectionLevel then
+					Message.Send(0, oPlayer.Index, 0, string.format("%s（%d级以下）的玩家受地图保护，无法攻击。", entry.name, entry.ProtectionLevel))
+            		return 1
+				end
+			end
+		end
     end
 
+    ---- 仅 PvP: 阻止攻击 400 级以下玩家
+    --if oTarget.Type == Enums.ObjectType.USER and oTarget.Level < 400 then
+    --    Message.Send(0, oPlayer.Index, 0, "你不能攻击 400 级以下的玩家。")
+    --    return 1
+    --end
+
     -- 阻止同公会友军伤害
-    if oTarget.Type == Enums.ObjectType.USER and oPlayer.GuildNumber > 0 and oPlayer.GuildNumber == oTarget.GuildNumber then
-        Message.Send(0, oPlayer.Index, 0, "你不能攻击战盟成员。")
-        return 1
-    end
+    --if oTarget.Type == Enums.ObjectType.USER and oPlayer.GuildNumber > 0 and oPlayer.GuildNumber == oTarget.GuildNumber then
+    --    Message.Send(0, oPlayer.Index, 0, "你不能攻击战盟成员。")
+    --    return 1
+    --end
 
     return 0
 end

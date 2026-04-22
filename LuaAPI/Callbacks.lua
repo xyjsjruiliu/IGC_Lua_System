@@ -42,7 +42,7 @@ end
 -- 当玩家断开与服务器的连接时调用 (异步)
 function onPlayerDisconnect(oPlayer)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
@@ -52,22 +52,22 @@ end
 
 -- 游戏服务器启动时调用 (异步)
 function onGameServerStart()
-	
+
 end
 
 -- 当服务器强制关闭、立即断开所有玩家连接时调用 (异步)
 function onDisconnectAllPlayers()
-	
+
 end
 
 -- 当服务器启动优雅关闭时调用，请求所有玩家登出 (异步)
 function onLogOutAllPlayers()
-	
+
 end
 
 -- 当服务器启动重启时调用，断开玩家连接并允许重连 (异步)
 function onDisconnectAllPlayersWithReconnect()
-	
+
 end
 ------------------------------------------------------------------
 -- 仓库 事件
@@ -83,7 +83,7 @@ end
 -- 当玩家关闭仓库时调用 (异步)
 function onCloseWarehouse(oPlayer)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
@@ -96,7 +96,7 @@ end
 function onTradeRequestSend(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
-			
+
 		end
 	end
 	return 0
@@ -108,7 +108,7 @@ end
 function onTradeResponseReceive(oPlayer, oTarget, bResponse)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
-			
+
 		end
 	end
 	return 0
@@ -119,7 +119,7 @@ end
 function onTradeAccept(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
-			
+
 		end
 	end
 	return 0
@@ -130,7 +130,7 @@ end
 function onTradeCancel(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
-			
+
 		end
 	end
 	return 0
@@ -143,21 +143,21 @@ end
 -- 当玩家进入血色城堡事件时调用 (异步)
 function onBloodCastleEnter(oPlayer, iEventLevel)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
 -- 当玩家进入赤色要塞事件时调用 (异步)
 function onChaosCastleEnter(oPlayer, iEventLevel)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
 -- 当玩家进入恶魔广场事件时调用 (异步)
 function onDevilSquareEnter(oPlayer, iEventLevel)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
@@ -168,14 +168,14 @@ end
 -- 当玩家升级时调用 (异步)
 function onPlayerLevelUp(oPlayer)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
 -- 当玩家大师升级时调用 (异步)
 function onPlayerMasterLevelUp(oPlayer)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
@@ -248,7 +248,7 @@ end
 function onNpcTalk(oPlayer, oNpc)
 	if (oPlayer ~= nil) then
 		if (oNpc ~= nil) then
-			
+
 		end
 	end
 	return 0
@@ -257,7 +257,7 @@ end
 -- 当玩家通过关闭窗口结束与NPC的对话时调用 (同步)
 function onCloseWindow(oPlayer)
 	if (oPlayer ~= nil) then
-	
+
 	end
 	return 0
 end
@@ -269,7 +269,7 @@ end
 -- 当玩家通过鼠标右键使用任何物品时调用 (同步)
 function onItemUse(iResult, oPlayer, oItem, iItemSourcePos, iItemTargetPos)
 	if (oPlayer ~= nil) then
-		
+
 	end
 	return 0
 end
@@ -277,21 +277,21 @@ end
 -- 当玩家在主背包中移动物品时调用 (异步)
 function onInventoryMoveItem(oPlayer, iItemSourcePos, iItemTargetPos, btResult)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
 -- 当玩家在活动背包中移动物品时调用 (异步)
 function onEventInventoryMoveItem(oPlayer, iItemSourcePos, iItemTargetPos, btResult)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
 -- 当玩家在宠物背包中移动物品时调用 (异步)
 function onMuunInventoryMoveItem(oPlayer, iItemSourcePos, iItemTargetPos, btResult)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
@@ -302,21 +302,21 @@ end
 -- 当玩家从地面拾取物品时调用 (异步)
 function onItemGet(oPlayer, sItemType, sItemLevel, btItemDur, btItemElement)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
 -- 当玩家获取活动物品时调用 (异步)
 function onEventItemGet(oPlayer, sItemType, sItemLevel, btItemDur, btItemElement)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
 -- 当玩家获取宠物物品时调用 (异步)
 function onMuunItemGet(oPlayer, sItemType, sItemLevel, btItemDur, btItemElement)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
@@ -327,14 +327,14 @@ end
 -- 当玩家装备物品时调用 (异步)
 function onItemEquip(oPlayer, iItemSourcePos, iItemTargetPos, btResult)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
 -- 当玩家卸下装备物品时调用 (异步)
 function onItemUnEquip(oPlayer, iItemSourcePos, iItemTargetPos, btResult)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
@@ -346,7 +346,7 @@ end
 function onItemRepair(oPlayer, oItemm)
 	if (oPlayer ~= nil) then
 		if (oItemm ~= nil) then
-			
+
 		end
 	end
 end
@@ -358,35 +358,35 @@ end
 -- 当玩家在登录或传送后加入地图时调用 (异步)
 function onCharacterJoinMap(oPlayer)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
 -- 当玩家在地图之间移动时调用 (异步)
 function onMoveMap(oPlayer, wMapNumber, btPosX, btPosY, iGateNumber)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
 -- 当玩家使用地图传送门时调用 (异步)
 function onMapTeleport(oPlayer, iGateNummber)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
 -- 当玩家使用传送命令或道具时调用 (异步)
 function onTeleport(oPlayer, wMapNumber, btPosX, btPosY)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
 -- 当玩家使用传送魔法技能时调用 (异步)
 function onTeleportMagicUse(oPlayer, btPosX, btPosY)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
@@ -398,7 +398,7 @@ end
 function onPlayerKill(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
-			
+
 		end
 	end
 end
@@ -407,7 +407,7 @@ end
 function onPlayerDie(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
-			
+
 		end
 	end
 end
@@ -471,7 +471,6 @@ function onCheckUserTarget(oPlayer, oTarget)
 		{ name = "冰风谷",	id = 2 , ProtectionLevel = 400 },
 		{ name = "仙踪林",	id = 3 , ProtectionLevel = 400 },
 		{ name = "失落之塔",	id = 4 , ProtectionLevel = 400 },
-		{ name = "古战场",	id = 6 , ProtectionLevel = 400 },
 		{ name = "亚特兰蒂斯",	id = 7 , ProtectionLevel = 400 },
 		{ name = "死亡沙漠",	id = 8 , ProtectionLevel = 400 },
 		{ name = "天空之城",	id = 10 , ProtectionLevel = 400 },

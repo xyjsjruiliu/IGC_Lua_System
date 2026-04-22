@@ -258,3 +258,10 @@ function FormatTime(seconds)
 end
 
 print(FormatTime(86400))
+
+hour = tonumber(os.date("%H"))
+if hour >= 0 and hour < 8 then
+	print("夜间保护期间（0:00~8:00）无法攻击其他玩家。")
+	--Message.Send(0, oPlayer.Index, 0, "夜间保护期间（0:00~8:00）无法攻击其他玩家。")
+	--return 1
+end

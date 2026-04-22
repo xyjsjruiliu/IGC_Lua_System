@@ -462,6 +462,16 @@ function onCheckUserTarget(oPlayer, oTarget)
 
 	if oPlayer == nil or oTarget == nil then return 0 end
 
+    -- 夜间保护: 每天0点~8点不能攻击其他玩家
+    if oTarget.Type == Enums.ObjectType.USER then
+		hour = tonumber(os.date("%H"))
+		if hour >= 0 and hour < 8 then
+			print("夜间保护期间（0:00~8:00）无法攻击其他玩家。")
+			--Message.Send(0, oPlayer.Index, 0, "夜间保护期间（0:00~8:00）无法攻击其他玩家。")
+			--return 1
+		end
+    end
+
     -- 仅 PvP: 阻止攻击 50 级以下玩家
     if oTarget.Type == Enums.ObjectType.USER and oTarget.Level < 50 then
         Message.Send(0, oPlayer.Index, 0, "你不能攻击 50 级以下的玩家。")

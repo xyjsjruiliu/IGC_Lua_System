@@ -511,6 +511,7 @@ Enums.EventType = {
 	SAMPLE_EVENT_1 = 0,
 	SAMPLE_EVENT_2 = 1,
 	SAMPLE_EVENT_3 = 2,
+	BATTLE_ROYALE = 3,	-- 绝地求生（组队赛）
 }
 -- 用法: if eventType == Enums.EventType.SAMPLE_EVENT_1 then print("Sample Event 1 Started!") end
 

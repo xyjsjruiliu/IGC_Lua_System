@@ -161,3 +161,21 @@ endHandlers[Enums.EventType.SAMPLE_EVENT_3] = function()
 	Message.Send(0, -1, 1, name .. " has ended!")
 	Log.Add(string.format("[事件示例3] %s ended", name))
 end
+
+------------------------------------------------------------------
+-- 绝地求生（组队赛）事件处理器
+------------------------------------------------------------------
+
+noticeHandlers[Enums.EventType.BATTLE_ROYALE] = function(timeRemaining)
+	local timeStr = FormatTimeRemaining(timeRemaining)
+	Message.Send(0, -1, 1, string.format("【绝地求生】比赛将在 %s 后开始！请输入 /绝地 报名！", timeStr))
+	Log.Add(string.format("[绝地求生] 预告：比赛将在 %s 后开始", timeStr))
+end
+
+startHandlers[Enums.EventType.BATTLE_ROYALE] = function()
+	BattleRoyale.StartSignup()
+end
+
+endHandlers[Enums.EventType.BATTLE_ROYALE] = function()
+	BattleRoyale.ForceEnd()
+end

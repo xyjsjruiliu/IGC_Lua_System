@@ -28,7 +28,7 @@ end
 -- 当玩家成功连接到服务器时调用 (异步)
 function onPlayerConnect(oPlayer)
 	if (oPlayer ~= nil) then
-		
+
 	end
 end
 
@@ -42,7 +42,8 @@ end
 -- 当玩家断开与服务器的连接时调用 (异步)
 function onPlayerDisconnect(oPlayer)
 	if (oPlayer ~= nil) then
-
+		-- 绝地求生：玩家断线处理
+		BattleRoyale.OnPlayerDisconnect(oPlayer)
 	end
 end
 
@@ -231,6 +232,15 @@ function onUseCommand(oPlayer, szCmd)
 		if cmd == "/背包" or cmd == "/beibao" or cmd == "/inv" or cmd == "/inventory" then
 			return PlayerInfo.HandleInventoryCommand(oPlayer, parts)
 		end
+
+		-- =============================================
+		-- 绝地求生报名命令
+		-- 使用方法：
+		--   /绝地 或 /jdqs   - 报名参加绝地求生
+		-- =============================================
+		if cmd == "/绝地" or cmd == "/jdqs" then
+			return BattleRoyale.HandleCommand(oPlayer)
+		end
 	end
 	return 0
 end
@@ -248,7 +258,11 @@ end
 function onNpcTalk(oPlayer, oNpc)
 	if (oPlayer ~= nil) then
 		if (oNpc ~= nil) then
-
+			-- 绝地求生：NPC对话报名
+			local brResult = BattleRoyale.HandleNpcTalk(oPlayer, oNpc)
+			if brResult == 1 then
+				return 1
+			end
 		end
 	end
 	return 0
@@ -406,16 +420,16 @@ end
 -- 当玩家死亡时调用 (异步)
 function onPlayerDie(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
-		if (oTarget ~= nil) then
-
-		end
+		-- 绝地求生：玩家死亡处理
+		BattleRoyale.OnPlayerDie(oPlayer, oTarget)
 	end
 end
 
 -- 当玩家死亡后重生时调用 (异步)
 function onPlayerRespawn(oPlayer)
 	if (oPlayer ~= nil) then
-		
+		-- 绝地求生：阻止参赛玩家在古战场重生
+		BattleRoyale.OnPlayerRespawn(oPlayer)
 	end
 end
 
@@ -432,7 +446,8 @@ end
 function onMonsterDie(oPlayer, oTarget)
 	if (oPlayer ~= nil) then
 		if (oTarget ~= nil) then
-			
+			-- 绝地求生：BOSS击杀检测
+			BattleRoyale.OnMonsterDie(oPlayer, oTarget)
 		end
 	end
 end
@@ -521,6 +536,19 @@ function onCheckUserTarget(oPlayer, oTarget)
 	}
 
 	if oPlayer == nil or oTarget == nil then return 0 end
+
+	-- 绝地求生PvP检查：参赛玩家在古战场上允许互相攻击
+	if oTarget.Type == Enums.ObjectType.USER then
+		local brResult = BattleRoyale.CheckPvP(oPlayer, oTarget)
+		if brResult == 1 then
+			-- 绝地求生允许的PvP，跳过所有保护检查
+			return 0
+		elseif brResult == 2 then
+			-- 绝地求生阻止的攻击
+			return 1
+		end
+		-- brResult == 0：非绝地求生相关，继续走正常保护流程
+	end
 
     -- 夜间保护: 每天0点~8点不能攻击其他玩家
     if oTarget.Type == Enums.ObjectType.USER then

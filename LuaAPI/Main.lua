@@ -27,6 +27,9 @@ LoadScript(BASE .. "Timers.lua")
 --LoadScript(BASE .. "AchievementSystem.lua")
 LoadScript(BASE .. "PlayerInfo.lua")
 
+-- 加载绝地求生系统
+LoadScript(BASE .. "BattleRoyale.lua")
+
 -- 初始化事件调度器
 EventScheduler.Initialize()
 
@@ -35,3 +38,6 @@ EventScheduler.Initialize()
 
 -- 初始化玩家信息查询系统
 PlayerInfo.Initialize()
+
+-- 初始化绝地求生系统
+BattleRoyale.Initialize()

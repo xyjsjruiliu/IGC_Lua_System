@@ -56,4 +56,13 @@
 		<Start Year="-1" Month="-1" Day="-1" DayOfWeek="-1" Hour="14" Minute="0" Second="0" />
 		<Start Year="-1" Month="-1" Day="-1" DayOfWeek="-1" Hour="20" Minute="0" Second="0" />
 	</Event>
+
+	<!-- 绝地求生（组队赛）: 每晚19:27开始报名，3分钟报名期，游戏时长10分钟（19:27~19:40） -->
+	<!-- 报名阶段 19:27~19:30 由 BattleRoyale.StartSignup() 内部管理 -->
+	<!-- 此事件 Type=3 对应 Enums.EventType.BATTLE_ROYALE -->
+	<!-- NoticePeriod=180 即开赛前3分钟（19:24）开始预告 -->
+	<!-- Duration=780 即报名3分钟 + 游戏10分钟 + 缓冲3分钟 = 780秒 -->
+	<Event Type="3" Name="绝地求生" NoticePeriod="180" Duration="780">
+		<Start Year="-1" Month="-1" Day="-1" DayOfWeek="-1" Hour="19" Minute="27" Second="0" />
+	</Event>
 </EventScheduler>
